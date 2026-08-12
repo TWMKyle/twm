@@ -1,2 +1,4 @@
-# twm
-The Wedding Machine
+streamlit
+pandas
+openpyxl
+pillow
