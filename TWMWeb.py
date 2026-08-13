@@ -118,7 +118,7 @@ st.write("Welcome! I hope you are as excited as us! Check out this page!")
 
 # Link opening utility (replaces webbrowser.open)
 st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
-st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com")
+st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
 
 # Input Section
 search_term = st.text_input("Enter your Name:", placeholder="e.g., Pat, Kyle").strip()
