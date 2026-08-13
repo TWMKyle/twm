@@ -1,5 +1,5 @@
 import ssl
-
+import gspread
 import base64
 import os
 import random
@@ -27,6 +27,20 @@ if "random_comment" not in st.session_state:
 conn = st.connection("gsheets", type=GSheetsConnection)
 df = conn.read(ttl=0) # ttl=0 ensures you don't cache stale data on fresh reads
 
+credentials = {
+    "type": st.secrets["connections"]["gsheets"]["type"],
+    "project_id": st.secrets["connections"]["gsheets"]["project_id"],
+    "private_key_id": st.secrets["connections"]["gsheets"]["private_key_id"],
+    "private_key": st.secrets["connections"]["gsheets"]["private_key"],
+    "client_email": st.secrets["connections"]["gsheets"]["client_email"],
+    "client_id": st.secrets["connections"]["gsheets"]["client_id"],
+    "auth_uri": st.secrets["connections"]["gsheets"]["auth_uri"],
+    "token_uri": st.secrets["connections"]["gsheets"]["token_uri"],
+    "auth_provider_x509_cert_url": st.secrets["connections"]["gsheets"]["auth_provider_x509_cert_url"],
+    "client_x509_cert_url": st.secrets["connections"]["gsheets"]["client_x509_cert_url"]
+}
+# Authenticate the secure writer client immediately on app startup
+gc = gspread.service_account_from_dict(credentials)
 
 # Page configuration
 st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
@@ -196,40 +210,32 @@ if st.session_state.active_guest is not None:
     
     with col1:
         if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
-            # 1. Convert only the single guest row to a standard python dictionary (bypasses pandas layout locks)
-            guest_dict = guest.to_dict()
-            
-            # 2. Update the value safely as a plain text string 
-            guest_dict['RSVP_Status'] = "attending"
-            
-            # 3. Turn it into a brand new standalone row snapshot
-            updated_row = pd.DataFrame([guest_dict], index=[guest_row_index])
-            
-            # 4. Upload this clean snapshot to your Google Sheet tab
-            # (Replace "Sheet1" with your exact spreadsheet tab name)
-            conn.update(worksheet="Sheet1", data=updated_row)
-            
-            # 5. Set session memory states and refresh
-            st.session_state.rsvp_status = "attending"
-            st.rerun()
+           try:
+                # Open sheet and target your column coordinate smoothly
+                sh = gc.open_by_url("https://google.com")
+                ws = sh.worksheet("Sheet1")
+                
+                row_to_update = int(guest_row_index) + 2
+                ws.update_cell(row_to_update, 6, "attending")  # Updates ONLY column F cell
+                
+                st.session_state.rsvp_status = "attending"
+                st.rerun()
+            except Exception as e:
+                st.error(f"❌ Cloud Write Error: {e}")
 
     with col2:
         if st.button("👎 No, I can't make it", key="btn_no", use_container_width=True):
-            # 1. Convert to a standard dictionary
-            guest_dict = guest.to_dict()
-            
-            # 2. Update the value safely as a plain text string
-            guest_dict['RSVP_Status'] = "declined"
-            
-            # 3. Turn it into a brand new standalone row snapshot
-            updated_row = pd.DataFrame([guest_dict], index=[guest_row_index])
-            
-            # 4. Upload this clean snapshot
-            conn.update(worksheet="Sheet1", data=updated_row)
-            
-            # 5. Set session memory states and refresh
-            st.session_state.rsvp_status = "declined"
-            st.rerun()
+            try:
+                sh = gc.open_by_url("https://google.com")
+                ws = sh.worksheet("Sheet1")
+                
+                row_to_update = int(guest_row_index) + 2
+                ws.update_cell(row_to_update, 6, "declined")
+                
+                st.session_state.rsvp_status = "declined"
+                st.rerun()
+            except Exception as e:
+                st.error(f"❌ Cloud Write Error: {e}")
 
 
     # Evaluate the RSVP choice from state memory
