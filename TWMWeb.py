@@ -8,6 +8,32 @@ import pandas as pd
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
+
+        st.markdown(
+            f"""
+            <style>
+            /* 1. Hides the GitHub icon and Deploy buttons in the top right corner */
+            [data-testid="stAppDeployButton"], 
+            .stDeployButton, 
+            #GithubIcon, 
+            [data-testid="stHeaderActionElements"] {
+                display: none !important;
+                visibility: hidden !important;
+            }
+            
+            /* 2. Hides the "Manage app" floating menu button in the lower-right corner */
+            [data-testid="stManageAppButton"],
+            .stManageAppButton,
+            footer {
+                display: none !important;
+                visibility: hidden !important;
+            }
+
+            /* --- Your existing background styling rules continue below --- */
+            [data-testid="stAppViewContainer"], .stApp, #root {
+                background-image: url("data:image/jpeg;base64,{encoded_string}") !important;
+                background-size: cover !important;
+
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
