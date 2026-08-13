@@ -196,19 +196,38 @@ if st.session_state.active_guest is not None:
     
     with col1:
         if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
-            df.at[guest_row_index, 'RSVP_Status'] = "attending"
-            df ['RSVP_Status'] = df['RSVP_Stauts'].astype(str)
-            updated_row = df.loc[[guest_row_index]]
+            # 1. Convert only the single guest row to a standard python dictionary (bypasses pandas layout locks)
+            guest_dict = guest.to_dict()
+            
+            # 2. Update the value safely as a plain text string 
+            guest_dict['RSVP_Status'] = "attending"
+            
+            # 3. Turn it into a brand new standalone row snapshot
+            updated_row = pd.DataFrame([guest_dict], index=[guest_row_index])
+            
+            # 4. Upload this clean snapshot to your Google Sheet tab
+            # (Replace "Sheet1" with your exact spreadsheet tab name)
             conn.update(worksheet="Sheet1", data=updated_row)
+            
+            # 5. Set session memory states and refresh
             st.session_state.rsvp_status = "attending"
             st.rerun()
 
     with col2:
         if st.button("👎 No, I can't make it", key="btn_no", use_container_width=True):
-            df.at[guest_row_index, 'RSVP_Status'] = "declined"
-            df ['RSVP_Status'] = df['RSVP_Stauts'].astype(str)
-            updated_row = df.loc[[guest_row_index]]
+            # 1. Convert to a standard dictionary
+            guest_dict = guest.to_dict()
+            
+            # 2. Update the value safely as a plain text string
+            guest_dict['RSVP_Status'] = "declined"
+            
+            # 3. Turn it into a brand new standalone row snapshot
+            updated_row = pd.DataFrame([guest_dict], index=[guest_row_index])
+            
+            # 4. Upload this clean snapshot
             conn.update(worksheet="Sheet1", data=updated_row)
+            
+            # 5. Set session memory states and refresh
             st.session_state.rsvp_status = "declined"
             st.rerun()
 
