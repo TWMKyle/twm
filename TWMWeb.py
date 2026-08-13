@@ -26,7 +26,7 @@ if "random_comment" not in st.session_state:
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 df = conn.read(ttl=0) # ttl=0 ensures you don't cache stale data on fresh reads
-df ['RSVP_Status'] = df['RSVP_Stauts'].astype(str)
+
 
 # Page configuration
 st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
@@ -193,7 +193,7 @@ if st.session_state.active_guest is not None:
 
     # Side-by-side RSVP buttons
     col1, col2 = st.columns(2)
-
+    df ['RSVP_Status'] = df['RSVP_Stauts'].astype(str)
     with col1:
         if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
             df.at[guest_row_index, 'RSVP_Status'] = "attending"
