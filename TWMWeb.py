@@ -196,14 +196,16 @@ if st.session_state.active_guest is not None:
     with col1:
         if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
             df.at[guest_row_index, 'RSVP_Status'] = "attending"
-            conn.update(data=df)
+            updated_row = df.loc[[guest_row_index]]
+            conn.update(worksheet="Sheet1", data=updated_row)
             st.session_state.rsvp_status = "attending"
             st.rerun()
 
     with col2:
         if st.button("👎 No, I can't make it", key="btn_no", use_container_width=True):
             df.at[guest_row_index, 'RSVP_Status'] = "declined"
-            conn.update(data=df)
+            updated_row = df.loc[[guest_row_index]]
+            conn.update(worksheet="Sheet1", data=updated_row)
             st.session_state.rsvp_status = "declined"
             st.rerun()
 
