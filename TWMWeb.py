@@ -241,9 +241,9 @@ if st.session_state.active_guest is not None:
     # Evaluate the RSVP choice from state memory
     if st.session_state.rsvp_status == "attending":
         st.balloons()
-        st.success("💖 Thank you for that! We will see you on our wedding day!")
+        st.success("💖 You have successfully RSVP'd!! We will see you on our wedding day!")
     elif st.session_state.rsvp_status == "declined":
-        st.info("😢 We will miss you! Thank you for letting us know.")
+        st.info("😢 Thank you for letting us know! If you ever change your mind, just click yes next time :) .")
 ## end of RSVP
 
 # 7. Action Links & Buttons
