@@ -8,6 +8,8 @@ import pandas as pd
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
+st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
+
 # Bypass SSL certificate verification
 os.environ['CURL_CA_BUNDLE'] = ''
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -112,6 +114,9 @@ if search_button:
     st.session_state.rsvp_status = None
     st.session_state.random_comment = None
 
+    # Displays a neat audio controller bar so guests can pause or adjust volume
+
+
     # Safety Check: If the search box is empty
     if not search_term:
         st.warning("⚠️ Please type a name first!")
@@ -172,6 +177,7 @@ if search_button:
 ## --- DISPLAY & RSVP PANEL - --
 # This code runs outside the search button block, reading directly from memory!
 if st.session_state.active_guest is not None:
+    guest_row_index = st.session_state.active_guest.name
     guest = st.session_state.active_guest
     comment_col = st.session_state.random_comment
     randocomment = guest[comment_col]
@@ -189,11 +195,18 @@ if st.session_state.active_guest is not None:
 
     with col1:
         if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
+            df.at[guest_row_index, 'RSVP_Status'] = "attending"
+            conn.update(data=df)
             st.session_state.rsvp_status = "attending"
+            st.rerun()
 
     with col2:
         if st.button("👎 No, I can't make it", key="btn_no", use_container_width=True):
+            df.at[guest_row_index, 'RSVP_Status'] = "declined"
+            conn.update(data=df)
             st.session_state.rsvp_status = "declined"
+            st.rerun()
+
 
     # Evaluate the RSVP choice from state memory
     if st.session_state.rsvp_status == "attending":
