@@ -8,6 +8,7 @@ import pandas as pd
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
+image_file = "TWMB.jpg"
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
@@ -45,8 +46,6 @@ gc = gspread.service_account_from_dict(credentials)
 # Page configuration
 st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
 
-image_file = "TWMB.jpg"
-
 def set_background(image_file):
     # Determine the absolute directory path where TWMWeb.py is running
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -64,21 +63,16 @@ def set_background(image_file):
     st.markdown(
         f"""
         <style>
-
-    
-        [data-testid="stAppDeployButton"], 
-        .stDeployButton, 
-        #GithubIcon, 
-        [data-testid="stHeaderActionElements"] {{
+         header, [data-testid="stHeader"], [data-testid="stHeaderActionElements"], .stDeployButton {{
             display: none !important;
             visibility: hidden !important;
+            height: 0px !important;
         }}
         
-        [data-testid="stManageAppButton"],
-        .stManageAppButton,
-        footer {{
+        footer, [data-testid="stManageAppButton"], .stManageAppButton {{
             display: none !important;
             visibility: hidden !important;
+            height: 0px !important;
         }}
  
         [data-testid="stAppViewContainer"], .stApp, #root {{
