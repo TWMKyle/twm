@@ -65,10 +65,7 @@ def set_background(image_file):
         f"""
         <style>
 
-        /* =======================================================
-           1. REMOVE GITHUB, DEPLOY, AND MANAGE APP BUTTONS
-           ======================================================= */
-        /* Hides the GitHub icon and Deploy buttons in the top right corner */
+    
         [data-testid="stAppDeployButton"], 
         .stDeployButton, 
         #GithubIcon, 
@@ -77,15 +74,13 @@ def set_background(image_file):
             visibility: hidden !important;
         }}
         
-        /* Hides the "Manage app" floating menu button in the lower-right corner */
         [data-testid="stManageAppButton"],
         .stManageAppButton,
         footer {{
             display: none !important;
             visibility: hidden !important;
         }}
-        
-        /* Force background image onto the primary app view engine layout wrappers */
+ 
         [data-testid="stAppViewContainer"], .stApp, #root {{
             background-image: url("data:image/jpeg;base64,{encoded_string}") !important;
             background-size: cover !important;
@@ -94,13 +89,11 @@ def set_background(image_file):
             background-attachment: fixed !important;
         }}
 
-        /* FORCE transparency on ALL inner container blocks blocking the view */
         [data-testid="stHeader"], [data-testid="stMainBlockContainer"], .stMain, .stMainBlockContainer, [data-testid="stVerticalBlock"] {{
             background-color: transparent !important;
             background: transparent !important;
         }}
 
-        /* Make sure structural grid divisions are see-through */
         [data-testid="stAppViewBlockContainer"] > div {{
             background: transparent !important;
             background-color: transparent !important;
