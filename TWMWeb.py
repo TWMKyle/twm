@@ -210,7 +210,7 @@ if st.session_state.active_guest is not None:
     
     with col1:
         if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
-           try:
+            try:
                 # Open sheet and target your column coordinate smoothly
                 sh = gc.open_by_url("https://google.com")
                 ws = sh.worksheet("Sheet1")
