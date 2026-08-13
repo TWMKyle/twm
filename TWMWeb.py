@@ -114,7 +114,7 @@ def set_background(image_file):
             unsafe_allow_html=True,
         )
 
-        else:
+    else:
         st.error(f"❌ Design Error: Could not find image file: {image_file}")
 
 
