@@ -48,75 +48,46 @@ st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="c
 image_file = "TWMB.jpg"
 
 def set_background(image_file):
-    if os.path.exists(image_file):
-        with open(image_file, "rb") as f:
-            encoded_string = base64.b64encode(f.read()).decode()
+    # Determine the absolute directory path where TWMWeb.py is running
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    full_image_path = os.path.join(script_dir, image_file)
 
-        st.markdown(
-            f"""
-            <style>
-            /* 1. Force background image onto the primary app view engine layout wrappers */
-            [data-testid="stAppViewContainer"], .stApp, #root {{
-                background-image: url("data:image/jpeg;base64,{encoded_string}") !important;
-                background-size: cover !important;
-                background-position: center !important;
-                background-repeat: no-repeat !important;
-                background-attachment: fixed !important;
-            }}
+    # Debug: Check if the file is found. If missing, it will print visually on screen.
+    if not os.path.exists(full_image_path):
+        st.error(f"❌ Looking for image at: {full_image_path} but it was NOT found!")
+        return
 
-            /* 2. FORCE transparency on ALL inner container blocks blocking the view */
-            [data-testid="stHeader"], [data-testid="stMainBlockContainer"], .stMain, .stMainBlockContainer, [data-testid="stVerticalBlock"] {{
-                background-color: transparent !important;
-                background: transparent !important;
-            }}
+    # If found, read and encode the asset
+    with open(full_image_path, "rb") as f:
+        encoded_string = base64.b64encode(f.read()).decode()
 
-            /* 3. Make sure structural grid divisions are see-through */
-            [data-testid="stAppViewBlockContainer"] > div {{
-                background: transparent !important;
-                background-color: transparent !important;
-            }}
+    st.markdown(
+        f"""
+        <style>
+        /* Force background image onto the primary app view engine layout wrappers */
+        [data-testid="stAppViewContainer"], .stApp, #root {{
+            background-image: url("data:image/jpeg;base64,{encoded_string}") !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+        }}
 
-            /* Keep your existing custom button and label styles below */
-            .wedding-title {{
-                background-color: rgba(139, 90, 43, 0.9);
-                color: #FDFBF7;
-                padding: 12px;
-                border-radius: 6px;
-                border: 2px solid #4A2E1B;
-                text-align: center;
-                font-family: 'Palatino', serif;
-                font-weight: bold;
-                font-size: 1.1rem;
-                margin-bottom: 20px;
-            }}
-            .custom-label {{
-                background-color: rgba(139, 90, 43, 0.9);
-                color: #FDFBF7;
-                padding: 8px 12px;
-                border-radius: 6px;
-                border: 2px solid #4A2E1B;
-                display: inline-block;
-                font-size: 0.95rem;
-                margin-bottom: 5px;
-            }}
-            .stButton > button {{
-                background-color: #8B5A2B !important;
-                color: #FDFBF7 !important;
-                border: 2px solid #4A2E1B !important;
-                border-radius: 6px !important;
-                width: 100%;
-                font-weight: bold;
-            }}
-            .stButton > button:hover {{
-                background-color: #5C3A21 !important;
-                color: #FDFBF7 !important;
-            }}
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
-    else:
-        st.error(f"❌ Design Error: Could not find image file: {image_file}")
+        /* FORCE transparency on ALL inner container blocks blocking the view */
+        [data-testid="stHeader"], [data-testid="stMainBlockContainer"], .stMain, .stMainBlockContainer, [data-testid="stVerticalBlock"] {{
+            background-color: transparent !important;
+            background: transparent !important;
+        }}
+
+        /* Make sure structural grid divisions are see-through */
+        [data-testid="stAppViewBlockContainer"] > div {{
+            background: transparent !important;
+            background-color: transparent !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 
