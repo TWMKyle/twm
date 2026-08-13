@@ -26,6 +26,7 @@ if "random_comment" not in st.session_state:
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 df = conn.read(ttl=0) # ttl=0 ensures you don't cache stale data on fresh reads
+df ['RSVP_Status'] = df['RSVP_Stauts'].astype(str)
 
 # Page configuration
 st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
