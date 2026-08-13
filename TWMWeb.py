@@ -55,8 +55,8 @@ def set_background(image_file):
         st.markdown(
             f"""
             <style>
-            /* 1. Target the absolute base container of the app */
-            [data-testid="stAppViewContainer"] {{
+            /* 1. Force background image onto the primary app view engine layout wrappers */
+            [data-testid="stAppViewContainer"], .stApp, #root {{
                 background-image: url("data:image/jpeg;base64,{encoded_string}") !important;
                 background-size: cover !important;
                 background-position: center !important;
@@ -64,16 +64,18 @@ def set_background(image_file):
                 background-attachment: fixed !important;
             }}
 
-            /* 2. Force the top header/toolbar wrapper to be completely see-through */
-            [data-testid="stHeader"] {{
+            /* 2. FORCE transparency on ALL inner container blocks blocking the view */
+            [data-testid="stHeader"], [data-testid="stMainBlockContainer"], .stMain, .stMainBlockContainer, [data-testid="stVerticalBlock"] {{
+                background-color: transparent !important;
                 background: transparent !important;
             }}
 
-            /* 3. Strip out default solid color overlays blocking the background view */
-            .stApp, .stMain, .stMainBlockContainer, [data-testid="stMainBlockContainer"] {{
+            /* 3. Make sure structural grid divisions are see-through */
+            [data-testid="stAppViewBlockContainer"] > div {{
                 background: transparent !important;
+                background-color: transparent !important;
             }}
-            
+
             /* Keep your existing custom button and label styles below */
             .wedding-title {{
                 background-color: rgba(139, 90, 43, 0.9);
@@ -113,7 +115,6 @@ def set_background(image_file):
             """,
             unsafe_allow_html=True,
         )
-
     else:
         st.error(f"❌ Design Error: Could not find image file: {image_file}")
 
