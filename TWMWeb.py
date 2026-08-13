@@ -47,7 +47,6 @@ st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="c
 
 image_file = "TWMB.jpg"
 
-
 def set_background(image_file):
     if os.path.exists(image_file):
         with open(image_file, "rb") as f:
@@ -56,8 +55,8 @@ def set_background(image_file):
         st.markdown(
             f"""
             <style>
-            /* Force the background onto the main view wrapper */
-            .stApp {{
+            /* 1. Target the absolute base container of the app */
+            [data-testid="stAppViewContainer"] {{
                 background-image: url("data:image/jpeg;base64,{encoded_string}") !important;
                 background-size: cover !important;
                 background-position: center !important;
@@ -65,11 +64,17 @@ def set_background(image_file):
                 background-attachment: fixed !important;
             }}
 
-            /* Clear out default solid background overlays blocking it */
-            .stMain, .stMainBlockContainer {{
+            /* 2. Force the top header/toolbar wrapper to be completely see-through */
+            [data-testid="stHeader"] {{
                 background: transparent !important;
             }}
 
+            /* 3. Strip out default solid color overlays blocking the background view */
+            .stApp, .stMain, .stMainBlockContainer, [data-testid="stMainBlockContainer"] {{
+                background: transparent !important;
+            }}
+            
+            /* Keep your existing custom button and label styles below */
             .wedding-title {{
                 background-color: rgba(139, 90, 43, 0.9);
                 color: #FDFBF7;
@@ -108,8 +113,10 @@ def set_background(image_file):
             """,
             unsafe_allow_html=True,
         )
-    else:
-        st.error(f"Could not find image file: {image_file}")
+
+        else:
+        st.error(f"❌ Design Error: Could not find image file: {image_file}")
+
 
 
 # App Header
@@ -118,7 +125,7 @@ st.write("Welcome! I hope you are as excited as us! Check out this page!")
 
 # Link opening utility (replaces webbrowser.open)
 st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
-st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
+st.sidebar.markdown("[Show me the venue please!]https://lascabanasbypollas.lodgify.com")
 
 # Input Section
 search_term = st.text_input("Enter your Name:", placeholder="e.g., Pat, Kyle").strip()
