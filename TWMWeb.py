@@ -1,12 +1,29 @@
+import ssl
+
 import base64
 import os
 import random
 from PIL import Image
 import pandas as pd
 import streamlit as st
+from streamlit_gsheets import GSheetsConnection, gsheets_connection
+
+# Bypass SSL certificate verification
+os.environ['CURL_CA_BUNDLE'] = ''
+ssl._create_default_https_context = ssl._create_unverified_context
 
 # 1. Define your target Excel file
-EXCEL_FILE = "TESTGUESTLIST.xlsx"
+#EXCEL_FILE = "TESTGUESTLIST.xlsx"
+
+if "active_guest" not in st.session_state:
+    st.session_state.active_guest = None
+if "rsvp_status" not in st.session_state:
+    st.session_state.rsvp_status = None
+if "random_comment" not in st.session_state:
+    st.session_state.random_comment = None
+
+conn = st.connection("gsheets", type=GSheetsConnection)
+df = conn.read(ttl=0) # ttl=0 ensures you don't cache stale data on fresh reads
 
 # Page configuration
 st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
@@ -78,28 +95,38 @@ def set_background(image_file):
         st.error(f"Could not find image file: {image_file}")
 # App Header
 st.title("💍 The Wedding Machine")
-st.write("Welcome! Enter your name below to find your seat and assignment.")
+st.write("Welcome! I hope you are as excited as us! Check out this page!")
 
 # Link opening utility (replaces webbrowser.open)
 st.sidebar.markdown("[Go to Wedding Website](https://example.com)")
 
 # Input Section
-search_term = st.text_input("Enter your Name (First Name, Last Name, or Nickname):", placeholder="e.g., Juan").strip()
-search_button = st.button("Search Guest List", type="primary")
+search_term = st.text_input("Enter your Name:", placeholder="e.g., Pat, Kyle").strip()
+search_button = st.button("Search Your Name", type="primary")
 
 # Search Logic
 if search_button:
+
+    # Always clears out all values
+    st.session_state.active_guest = None
+    st.session_state.rsvp_status = None
+    st.session_state.random_comment = None
+
     # Safety Check: If the search box is empty
     if not search_term:
         st.warning("⚠️ Please type a name first!")
 
-    # Safety Check: If the Excel file is missing
-    elif not os.path.exists(EXCEL_FILE):
-        st.error(f"❌ File Error: Could not find file '{EXCEL_FILE}'")
+    # Old Safety Check: If the Excel file is missing
+    #elif not os.path.exists(GList):
+    #    st.error(f"❌ File Error: Could not find file '{GList}'")
+
+    # New Safety Check
+    elif df is None or df.empty:
+        st.error("❌ Data Error: Could not load data from Google Sheets")
 
     else:
         # Read the excel file
-        df = pd.read_excel(EXCEL_FILE)
+        # df = pd.read_excel(GList)
 
         # Combine columns for a full-name lookup
         fullname = df["Pangalan"].astype(str) + " " + df["Apelido"].astype(str)
@@ -113,28 +140,68 @@ if search_button:
 
         # Case 1: No results found
         if results.empty:
-            st.info("💡 You were using your whole name weren't you? Go on try your nickname :)")
+            st.info("💡 I can't seem to find you, can you please try again? :)")
 
         # Case 2: Exactly one match found
         elif len(results) == 1:
             guest = results.iloc[0]
+            st.session_state.active_guest = results.iloc[0]
+            st.session_state.random_comment = random.choice(["Mungkahi1", "Mungkahi2"])
+            st.session_state.rsvp_status = None
 
             # Select a random comment from the available columns
             randocomment = guest[random.choice(["Mungkahi1", "Mungkahi2"])]
+
 
             # Display successful guest information
             st.success(f"### 🎉 Welcome, {guest['Pangalan']} {guest['Apelido']}!")
             st.markdown(f"**Your Assignment:** {guest['Gawain']}")
             st.info(f"💬 *{randocomment}*")
 
+            st.rerun()
+
         # Case 3: Multiple matches found
         elif len(results) > 1:
             st.warning("⚠️ **Multiple Matches Found**")
-            st.write("I found multiple guests matching your search. Please search again using your full name.")
+            st.write("I found multiple guests matching your search. Try using your nickname or full name.")
 
             # Display the matching names neatly in a list
             for _, guest in results.iterrows():
                 st.markdown(f"• **{guest['Pangalan']} {guest['Apelido']}** — {guest['Gawain']}")
+
+## --- DISPLAY & RSVP PANEL - --
+# This code runs outside the search button block, reading directly from memory!
+if st.session_state.active_guest is not None:
+    guest = st.session_state.active_guest
+    comment_col = st.session_state.random_comment
+    randocomment = guest[comment_col]
+
+    # Display guest information
+    st.success(f"### 🎉 Welcome, {guest['Pangalan']} {guest['Apelido']}!")
+    st.markdown(f"**Your Assignment:** {guest['Gawain']}")
+    st.info(f"💬 *{randocomment}*")
+
+    st.write("---")
+    st.write("**Are you attending?**")
+
+    # Side-by-side RSVP buttons
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
+            st.session_state.rsvp_status = "attending"
+
+    with col2:
+        if st.button("👎 No, I can't make it", key="btn_no", use_container_width=True):
+            st.session_state.rsvp_status = "declined"
+
+    # Evaluate the RSVP choice from state memory
+    if st.session_state.rsvp_status == "attending":
+        st.balloons()
+        st.success("💖 Thank you for that! We will see you on our wedding day!")
+    elif st.session_state.rsvp_status == "declined":
+        st.info("😢 We will miss you! Thank you for letting us know.")
+## end of RSVP
 
 # 7. Action Links & Buttons
 if st.button("Show me the invitation!"):
