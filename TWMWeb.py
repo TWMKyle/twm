@@ -15,7 +15,7 @@ os.environ['CURL_CA_BUNDLE'] = ''
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # 1. Define your target Excel file
-#EXCEL_FILE = "TESTGUESTLIST.xlsx"
+# EXCEL_FILE = "TESTGUESTLIST.xlsx"
 
 if "active_guest" not in st.session_state:
     st.session_state.active_guest = None
@@ -25,7 +25,7 @@ if "random_comment" not in st.session_state:
     st.session_state.random_comment = None
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df = conn.read(ttl=0) # ttl=0 ensures you don't cache stale data on fresh reads
+df = conn.read(ttl=0)  # ttl=0 ensures you don't cache stale data on fresh reads
 
 credentials = {
     "type": st.secrets["connections"]["gsheets"]["type"],
@@ -110,12 +110,15 @@ def set_background(image_file):
         )
     else:
         st.error(f"Could not find image file: {image_file}")
+
+
 # App Header
 st.title("💍 The Wedding Machine")
 st.write("Welcome! I hope you are as excited as us! Check out this page!")
 
 # Link opening utility (replaces webbrowser.open)
-st.sidebar.markdown("[Go to Wedding Website](https://example.com)")
+st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
+st.sidebar.markdown("[Show me the venue please!]https://lascabanasbypollas.lodgify.com")
 
 # Input Section
 search_term = st.text_input("Enter your Name:", placeholder="e.g., Pat, Kyle").strip()
@@ -131,13 +134,12 @@ if search_button:
 
     # Displays a neat audio controller bar so guests can pause or adjust volume
 
-
     # Safety Check: If the search box is empty
     if not search_term:
         st.warning("⚠️ Please type a name first!")
 
     # Old Safety Check: If the Excel file is missing
-    #elif not os.path.exists(GList):
+    # elif not os.path.exists(GList):
     #    st.error(f"❌ File Error: Could not find file '{GList}'")
 
     # New Safety Check
@@ -171,7 +173,6 @@ if search_button:
 
             # Select a random comment from the available columns
             randocomment = guest[random.choice(["Mungkahi1", "Mungkahi2"])]
-
 
             # Display successful guest information
             st.success(f"### 🎉 Welcome, {guest['Pangalan']} {guest['Apelido']}!")
@@ -207,17 +208,18 @@ if st.session_state.active_guest is not None:
 
     # Side-by-side RSVP buttons
     col1, col2 = st.columns(2)
-    
+
     with col1:
         if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
             try:
                 # Open sheet and target your column coordinate smoothly
-                sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1QsBYqBDMM5VGixJE-gA_xGcSi78kDJSKSqFOSAJ8k98/edit?gid=0#gid=0")
+                sh = gc.open_by_url(
+                    "https://docs.google.com/spreadsheets/d/1QsBYqBDMM5VGixJE-gA_xGcSi78kDJSKSqFOSAJ8k98/edit?gid=0#gid=0")
                 ws = sh.worksheet("Sheet1")
-                
+
                 row_to_update = int(guest_row_index) + 2
                 ws.update_cell(row_to_update, 6, "attending")  # Updates ONLY column F cell
-                
+
                 st.session_state.rsvp_status = "attending"
                 st.rerun()
             except Exception as e:
@@ -226,17 +228,17 @@ if st.session_state.active_guest is not None:
     with col2:
         if st.button("👎 No, I can't make it", key="btn_no", use_container_width=True):
             try:
-                sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1QsBYqBDMM5VGixJE-gA_xGcSi78kDJSKSqFOSAJ8k98/edit?gid=0#gid=0")
+                sh = gc.open_by_url(
+                    "https://docs.google.com/spreadsheets/d/1QsBYqBDMM5VGixJE-gA_xGcSi78kDJSKSqFOSAJ8k98/edit?gid=0#gid=0")
                 ws = sh.worksheet("Sheet1")
-                
+
                 row_to_update = int(guest_row_index) + 2
                 ws.update_cell(row_to_update, 6, "declined")
-                
+
                 st.session_state.rsvp_status = "declined"
                 st.rerun()
             except Exception as e:
                 st.error(f"❌ Cloud Write Error: {e}")
-
 
     # Evaluate the RSVP choice from state memory
     if st.session_state.rsvp_status == "attending":
@@ -247,17 +249,6 @@ if st.session_state.active_guest is not None:
 ## end of RSVP
 
 # 7. Action Links & Buttons
-if st.button("Show me the invitation!"):
-    st.markdown(
-        "[Click here to open the invitation](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)",
-        unsafe_allow_html=True,
-    )
-
-if st.button("When and where is the wedding happening?"):
-    st.markdown(
-        "[Click here to open wedding details](https://lascabanasbypollas.lodgify.com)",
-        unsafe_allow_html=True,
-    )
 
 st.write("---")
 
