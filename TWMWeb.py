@@ -212,7 +212,7 @@ if st.session_state.active_guest is not None:
         if st.button("👍 Yes, I'll be there!", key="btn_yes", use_container_width=True):
             try:
                 # Open sheet and target your column coordinate smoothly
-                sh = gc.open_by_url("https://google.com")
+                sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1QsBYqBDMM5VGixJE-gA_xGcSi78kDJSKSqFOSAJ8k98/edit?gid=0#gid=0")
                 ws = sh.worksheet("Sheet1")
                 
                 row_to_update = int(guest_row_index) + 2
@@ -226,7 +226,7 @@ if st.session_state.active_guest is not None:
     with col2:
         if st.button("👎 No, I can't make it", key="btn_no", use_container_width=True):
             try:
-                sh = gc.open_by_url("https://google.com")
+                sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1QsBYqBDMM5VGixJE-gA_xGcSi78kDJSKSqFOSAJ8k98/edit?gid=0#gid=0")
                 ws = sh.worksheet("Sheet1")
                 
                 row_to_update = int(guest_row_index) + 2
