@@ -8,6 +8,37 @@ import pandas as pd
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
+image_wedding = "a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+
+try:
+    with open(image_wedding, "rb") as file1:
+        encoded1 = base64.b64encode(file1.read()).decode("utf-8")
+        img_src1 = f"data:image/jpeg;base64,{encoded1}"
+except FileNotFoundError as e:
+    # Crucial: This must be a DIRECT link to an image file, not a website link
+    img_src1 = "https://unsplash.com"
+
+# SWITCH TO ST.MARKDOWN TO BYPASS THE HTML SANDBOX
+st.markdown(
+    f"""
+    <div style="
+        border: 2px solid #4A90E2;
+        border-radius: 10px;
+        padding: 15px;
+        width: 180px;
+        height: 250px;
+        text-align: center;
+        background-image: url('{img_src1}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: sans-serif;
+    "> 
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 image_file = "TWMB.jpg"
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
@@ -246,39 +277,3 @@ if st.button("Turn off the Wedding Machine"):
     )
 
 
-image_wedding = "a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
-
-try:
-        # 2. Read the local file and convert it into a string
-    
-        with open(image_wedding, "rb") as file1:
-            encoded1 = base64.b64encode(file1.read()).decode("utf-8")
-            img_src1 = f"data:image/jpeg;base64,{encoded1}"
-
-except FileNotFoundError as e:
-    # Fallbacks to stop the app from crashing if a file is missing
-        img_src1 = "https://unsplash.com"
-
-st.html(
-
-         
-f"""
-<div style="
-    border: 2px solid #4A90E2;
-    border-radius: 10px;
-    padding: 15px;
-    width: 180px;
-    text-align: center;
-    
-    /* 1. Add these 4 lines for the background image */
-    background-image: url('{img_src1}');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    font-family: sans-serif;
-"> 
-</div>
-"""
-
-  )
