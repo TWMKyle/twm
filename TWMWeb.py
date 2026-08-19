@@ -277,7 +277,7 @@ f"""
     background-repeat: no-repeat;
     
     font-family: sans-serif;
-
+"> 
 </div>
 """
 
