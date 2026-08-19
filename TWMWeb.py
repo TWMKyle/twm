@@ -8,21 +8,11 @@ import pandas as pd
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
-image_wedding = "a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+img_src1 = "a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
 
-try:
-    with open(image_wedding, "rb") as file1:
-        encoded1 = base64.b64encode(file1.read()).decode("utf-8")
-        img_src1 = f"data:image/jpeg;base64,{encoded1}"
-except FileNotFoundError:
-    # A valid, direct image asset fallback link
-    img_src1 = "https://unsplash.com"
-
-# 1. Inject the background image via a dedicated style block
 st.markdown(
     f"""
-    <style>
-    .wedding-card {{
+    <div style="
         border: 2px solid #4A90E2;
         border-radius: 10px;
         padding: 15px;
@@ -31,24 +21,16 @@ st.markdown(
         text-align: center;
         font-family: sans-serif;
         
-        /* Forces the background to cover the exact dimensions of the container */
-        background-image: url('{img_src1}') !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    """
-    <div class="wedding-card">
+        /* Direct URL mapping handles scaling natively */
+        background-image: url('{img_src1}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    ">
     </div>
     """,
     unsafe_allow_html=True
 )
-
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
