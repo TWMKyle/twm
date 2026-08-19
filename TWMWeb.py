@@ -244,3 +244,41 @@ if st.button("Turn off the Wedding Machine"):
     st.info(
         "The Wedding Machine is safely running in the cloud. You can simply close this browser tab!"
     )
+
+
+image_wedding = "a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+
+try:
+        # 2. Read the local file and convert it into a string
+    
+        with open(image_wedding, "rb") as file1:
+            encoded1 = base64.b64encode(file1.read()).decode("utf-8")
+            img_src1 = f"data:image/jpeg;base64,{encoded1}"
+
+except FileNotFoundError as e:
+    # Fallbacks to stop the app from crashing if a file is missing
+        img_src1 = "https://unsplash.com"
+
+st.html(
+
+         
+f"""
+<div style="
+    border: 2px solid #4A90E2;
+    border-radius: 10px;
+    padding: 15px;
+    width: 180px;
+    text-align: center;
+    
+    /* 1. Add these 4 lines for the background image */
+    background-image: url('{img_src1}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    font-family: sans-serif;
+
+</div>
+"""
+
+  )
