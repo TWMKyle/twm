@@ -8,7 +8,7 @@ import pandas as pd
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
-img_src1 = "a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+img_src1 = "https://github.com/TWMKyle/twm/blob/19b16322ef50777fe9397c0fa19b1e8fc0de7231/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
 
 st.markdown(
     f"""
