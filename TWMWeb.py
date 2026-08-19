@@ -10,9 +10,11 @@ from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
 img_src1 = "https://githubusercontent.com"
 
+# 2. Inject CSS rules inside a real <style> element wrapper
 st.markdown(
     f"""
-    <div style="
+    <style>
+    .wedding-container {{
         border: 2px solid #4A90E2;
         border-radius: 10px;
         padding: 15px;
@@ -20,15 +22,27 @@ st.markdown(
         height: 250px;
         text-align: center;
         font-family: sans-serif;
-        background-image: url('{img_src1}');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    ">
+        
+        background-image: url('{img_src1}') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }}
+    </style>
+    """, 
+    unsafe_allow_html=True
+)
+
+# 3. Call your structured profile box card layout using the CSS selector class
+st.markdown(
+    """
+    <div class="wedding-container">
     </div>
     """,
     unsafe_allow_html=True
 )
+
+
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
