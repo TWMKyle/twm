@@ -14,32 +14,41 @@ try:
     with open(image_wedding, "rb") as file1:
         encoded1 = base64.b64encode(file1.read()).decode("utf-8")
         img_src1 = f"data:image/jpeg;base64,{encoded1}"
-except FileNotFoundError as e:
-    # Crucial: This must be a DIRECT link to an image file, not a website link
+except FileNotFoundError:
+    # A valid, direct image asset fallback link
     img_src1 = "https://unsplash.com"
 
-# SWITCH TO ST.MARKDOWN TO BYPASS THE HTML SANDBOX
+# 1. Inject the background image via a dedicated style block
 st.markdown(
     f"""
-    <div style="
+    <style>
+    .wedding-card {{
         border: 2px solid #4A90E2;
         border-radius: 10px;
         padding: 15px;
         width: 180px;
         height: 250px;
         text-align: center;
-        background-image: url('{img_src1}');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         font-family: sans-serif;
-    "> 
+        
+        /* Forces the background to cover the exact dimensions of the container */
+        background-image: url('{img_src1}') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown(
+    """
+    <div class="wedding-card">
     </div>
     """,
     unsafe_allow_html=True
 )
 
-image_file = "TWMB.jpg"
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
