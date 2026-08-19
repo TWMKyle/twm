@@ -12,10 +12,20 @@ from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
 img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
 
-# 2. Inject global style settings safely using HTML tag wrappers
+# 2. Inject styling to target the ENTIRE Streamlit app frame
 st.markdown(
     f"""
     <style>
+    /* This selector targets the entire background canvas of Streamlit */
+    [data-testid="stAppViewContainer"] {{
+        background-image: url('{img_src1}') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+    }}
+    
+    /* Optional: Keeps Kyle's card separate so it sits cleanly on top of the background */
     .wedding-card {{
         border: 2px solid #4A90E2;
         border-radius: 10px;
@@ -24,23 +34,19 @@ st.markdown(
         height: 250px;
         text-align: center;
         font-family: sans-serif;
-        background-image: url('{img_src1}') !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
+        background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white card */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# 3. Create the profile element using the CSS selector class defined above
+# 3. Create the foreground profile element sitting ON TOP of the full-page image
 st.markdown(
-    '<div class="wedding-card"></div>',
+    '<div class="wedding-card"><h3>Kyle</h3><p>Music Leader</p></div>',
     unsafe_allow_html=True
 )
-
-
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
