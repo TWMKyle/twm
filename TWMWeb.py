@@ -20,8 +20,6 @@ st.markdown(
         height: 250px;
         text-align: center;
         font-family: sans-serif;
-        
-        /* Direct URL mapping handles scaling natively */
         background-image: url('{img_src1}');
         background-size: cover;
         background-position: center;
