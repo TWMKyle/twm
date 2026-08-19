@@ -8,13 +8,14 @@ import pandas as pd
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
-img_src1 = "https://githubusercontent.com"
 
-# 2. Inject CSS rules inside a real <style> element wrapper
+img_src1 = "https://github.com/TWMKyle/twm/blob/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+
+# 2. Inject global style settings safely using HTML tag wrappers
 st.markdown(
     f"""
     <style>
-    .wedding-container {{
+    .wedding-card {{
         border: 2px solid #4A90E2;
         border-radius: 10px;
         padding: 15px;
@@ -22,23 +23,19 @@ st.markdown(
         height: 250px;
         text-align: center;
         font-family: sans-serif;
-        
         background-image: url('{img_src1}') !important;
         background-size: cover !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
     }}
     </style>
-    """, 
+    """,
     unsafe_allow_html=True
 )
 
-# 3. Call your structured profile box card layout using the CSS selector class
+# 3. Create the profile element using the CSS selector class defined above
 st.markdown(
-    """
-    <div class="wedding-container">
-    </div>
-    """,
+    '<div class="wedding-card"></div>',
     unsafe_allow_html=True
 )
 
