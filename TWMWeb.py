@@ -16,7 +16,7 @@ wedding_photos = [
 ]
 
 img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
-img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"
+img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/rustic-barn-wood-wallpaper-showcasing-natural-browns-textured-finish-perfect-cozy-interiors-countrythemed-decor-ideas_184076-37815.jpg.avif"
 
 
 
@@ -80,6 +80,22 @@ st.markdown(
         /* FIX: Removed the hardcoded background-image property that was breaking the loop */
     }}
 
+    /* TARGET THE SIDEBAR CONTAINER */
+    [data-testid="stSidebar"] {{
+        background-image: url('{img_srcp}') !important;
+        background-size: cover !important;        /* Stretches image to fill panel */
+        background-position: center !important;     /* Centers the graphic focus */
+        background-repeat: no-repeat !important;   /* Prevents tiling of the asset */
+        background-attachment: fixed !important;    /* Keeps image still while scrolling text */
+    }}
+
+    /* OPTIONAL OVERLAY: Makes text highly readable over a busy image background */
+    [data-testid="stSidebarUserContent"] {{
+        background-color: rgba(255, 255, 255, 0.8) !important; /* White tint with 80% opacity */
+        padding: 2rem 1.5rem !important;
+        border-radius: 12px;
+        margin: 1rem;
+    }}
 
     /* Elegant custom scrollbar tailoring for modern web browsers */
     .photo-scroll-container::-webkit-scrollbar {{
