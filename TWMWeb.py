@@ -226,7 +226,22 @@ st.markdown(
         font-weight: 600 !important;
         margin: 0px !important;
     }}
-        
+
+    .stApp div[data-testid="stBaseButton-primary"] button p,
+    .stApp div[data-testid="stBaseButton-secondary"] button p,
+    .stApp button p,
+    .stApp button div,
+    .stApp button span,
+    .stApp button [data-testid="stMarkdownContainer"],
+    button p,
+    button [data-testid="stMarkdownContainer"] {{
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important; 
+        font-size: 0.72rem !important;           /* REDUCED FURTHER: Forced tiny scale */
+        font-weight: 600 !important;
+        letter-spacing: 0.08rem !important;      
+        text-transform: uppercase !important;    
+    }}
         
         </style>
     """,
