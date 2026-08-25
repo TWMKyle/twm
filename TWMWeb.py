@@ -19,7 +19,7 @@ st.markdown(
     <style>
     /* This selector targets the entire background canvas of Streamlit */
     [data-testid="stAppViewContainer"] {{
-        background-image: url('{img_srcp}') !important;
+        background-image: url('{img_src1}') !important;
         background-size: cover !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
@@ -41,7 +41,7 @@ st.markdown(
 
     /* 1. SIDEBAR BACKGROUND IMAGE CUSTOMIZATION */
     [data-testid="stSidebar"] {{
-        background-image: url('{sidebar_img_url}') !important;
+        background-image: url('{img_srcp}') !important;
         background-size: cover !important;        /* Options: 'cover', 'contain', or specific size like '200px' */
         background-position: center !important;     /* Options: 'top', 'bottom', 'center', 'top right' */
         background-repeat: no-repeat !important;
