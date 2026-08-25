@@ -83,7 +83,7 @@ st.markdown(
     /* TARGET THE SIDEBAR CONTAINER */
     [data-testid="stSidebar"] {{
         background-image: url('{img_srcp}') !important;
-        background-size: cover !important;        /* Stretches image to fill panel */
+        background-size: contain !important;        /* Stretches image to fill panel */
         background-position: center !important;     /* Centers the graphic focus */
         background-repeat: no-repeat !important;   /* Prevents tiling of the asset */
         background-attachment: fixed !important;    /* Keeps image still while scrolling text */
