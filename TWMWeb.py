@@ -11,6 +11,7 @@ from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
 
 img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"
 
 # 2. Inject styling to target the ENTIRE Streamlit app frame
 st.markdown(
@@ -18,7 +19,7 @@ st.markdown(
     <style>
     /* This selector targets the entire background canvas of Streamlit */
     [data-testid="stAppViewContainer"] {{
-        background-image: url('{img_src1}') !important;
+        background-image: url('{img_srcp}') !important;
         background-size: cover !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
@@ -36,12 +37,38 @@ st.markdown(
         color: #FFFFFF !important; /* Soft Charcoal dark text */
         font-size: 1.1rem;
     }}
+
+
+    /* 1. SIDEBAR BACKGROUND IMAGE CUSTOMIZATION */
+    [data-testid="stSidebar"] {{
+        background-image: url('{sidebar_img_url}') !important;
+        background-size: cover !important;        /* Options: 'cover', 'contain', or specific size like '200px' */
+        background-position: center !important;     /* Options: 'top', 'bottom', 'center', 'top right' */
+        background-repeat: no-repeat !important;
+        background-attachment: scroll !important;  /* 'fixed' locks it, 'scroll' lets it move with text */
+    }}
+
+    /* Optional: Add a subtle overlay to the sidebar to make text more readable over the image */
+    [data-testid="stSidebarUserContent"] {{
+        background-color: rgba(255, 255, 255, 0.75) !important; /* White tint with 75% opacity */
+        padding: 2rem 1.5rem !important;
+        border-radius: 10px;
+        margin: 1rem;
+    }}
+    
     
     </style>
     """,
     unsafe_allow_html=True
 )
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
+
+
+
+# You can stack multiple images or add other sidebar widgets below it
+st.sidebar.write("### Wedding Details")
+st.sidebar.write("📍 Venue: The Garden Pavilion")
+st.sidebar.write("📅 Date: June 20, 2027")
 
 # Bypass SSL certificate verification
 os.environ['CURL_CA_BUNDLE'] = ''
