@@ -257,7 +257,6 @@ html_photo_stack += '</div>'
 # 2. Inject the scroll stack container right into the side panel
 st.sidebar.markdown(html_photo_stack, unsafe_allow_html=True)
 
-st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
 os.environ['CURL_CA_BUNDLE'] = ''
