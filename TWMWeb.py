@@ -81,7 +81,7 @@ st.markdown(
     }}
 
     [data-testid="stSidebar"] {{
-        background-image: url('{sidebar_bg_image}') !important;
+        background-image: url('{img_srcp}') !important;
         background-size: contain !important;     /* CHANGE THIS: Fits the whole image */
         background-position: top center !important; /* Pins it neatly to the top edge */
         background-repeat: no-repeat !important;  /* Stops it from tiling vertically */
