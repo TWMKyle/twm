@@ -24,6 +24,10 @@ img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"
 st.sidebar.write("### Wedding Details")
 st.sidebar.write("📍 Venue: The Garden Pavilion")
 st.sidebar.write("📅 Date: June 20, 2027")
+# Link opening utility (replaces webbrowser.open)
+st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
+st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
+
 
 # 2. Inject styling to target the ENTIRE Streamlit app frame
 st.markdown(
@@ -161,9 +165,6 @@ st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="c
 st.title("💍 The Wedding Machine")
 st.write("Welcome! I hope you are as excited as us! Check out this page!")
 
-# Link opening utility (replaces webbrowser.open)
-st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
-st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
 
 # Input Section
 search_term = st.text_input("Enter your Name:", placeholder="e.g., Pat, Kyle").strip()
