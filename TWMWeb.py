@@ -16,13 +16,6 @@ wedding_photos = [
 img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
 img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"
 
-html_photo_stack = '<div class="photo-scroll-container">'
-for url in wedding_photos:
-    html_photo_stack += f'<img src="{"https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"}" class="portrait-stack-img" />'
-html_photo_stack += '</div>'
-
-# 2. Inject the scroll stack container right into the side panel
-st.sidebar.markdown(html_photo_stack, unsafe_allow_html=True)
 
 
 # 2. Inject styling to target the ENTIRE Streamlit app frame
@@ -106,14 +99,22 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 
+html_photo_stack = '<div class="photo-scroll-container">'
+for url in wedding_photos:
+    html_photo_stack += f'<img src="{"https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"}" class="portrait-stack-img" />'
+html_photo_stack += '</div>'
+
+# 2. Inject the scroll stack container right into the side panel
+st.sidebar.markdown(html_photo_stack, unsafe_allow_html=True)
 
 # You can stack multiple images or add other sidebar widgets below it
 st.sidebar.write("### Wedding Details")
 st.sidebar.write("📍 Venue: The Garden Pavilion")
 st.sidebar.write("📅 Date: June 20, 2027")
+
+st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
 os.environ['CURL_CA_BUNDLE'] = ''
