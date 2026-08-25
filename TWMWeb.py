@@ -165,7 +165,24 @@ st.markdown(
         transform: translateY(-1px);              /* SHRUNK: Smaller lift track gap */
         cursor: pointer;
     }}
-    
+
+    .header-silhouette-box {{
+        background-color: rgba(255, 255, 255, 0.15) !important; /* Soft white silhouette backdrop */
+        backdrop-filter: blur(8px) !important;                  /* Premium frosted glass blur effect */
+        -webkit-backdrop-filter: blur(8px) !important;          /* Safari web browser rendering fix */
+        border-radius: 16px !important;                          /* Elegant rounded container corners */
+        padding: 2rem 2.5rem !important;                        /* Balanced text layout padding bounds */
+        border: 1px solid rgba(255, 255, 255, 0.25) !important; /* Extremely thin subtle highlight frame line */
+        box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1) !important;  /* Soft luxury separation shadow effect */
+        margin-bottom: 2rem !important;                          /* Spacing between header card and buttons below */
+        text-align: center !important;                           /* Optional: Centers your titles elegantly */
+    }}
+
+    /* Override the main panel white text rule specifically inside the silhouette box for optimal reading contrast */
+    .header-silhouette-box p {{
+        color: #FFFFFF !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4) !important; /* Soft text shadowing for absolute clarity */
+    }}
     </style>
     """,
     unsafe_allow_html=True
