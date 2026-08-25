@@ -9,6 +9,9 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
 
+wedding_photos = [
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"
+]
 
 img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
 img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"
