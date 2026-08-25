@@ -139,11 +139,15 @@ st.markdown(
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
     }}
 
-    /* Make text inside buttons explicitly white if nested in paragraph elements */
+     /* FIX: Force every possible text element inside the button container to be White */
     div[data-testid="stBaseButton-primary"] button p,
     div[data-testid="stBaseButton-secondary"] button p,
-    button p {{
+    button p,
+    button div,
+    button span,
+    button [data-testid="stMarkdownContainer"] {{
         color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important; /* Forces Safari/Chrome compatibility */
     }}
 
     /* Interactive Hover State: Darker moss green and a glowing gold shadow */
