@@ -10,7 +10,8 @@ from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
 
 
-img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+#img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+img_srcy = "https://raw.githubusercontent.com/TWMKyle/KDS/main/space-rocket-textured-background-blue-plasticine-clay-craft-kids.jpg"
 
 # 2. Inject styling to target the ENTIRE Streamlit app frame
 st.markdown(
@@ -18,7 +19,7 @@ st.markdown(
     <style>
     /* This selector targets the entire background canvas of Streamlit */
     [data-testid="stAppViewContainer"] {{
-        background-image: url('{img_src1}') !important;
+        background-image: url('{img_srcy}') !important;
         background-size: cover !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
