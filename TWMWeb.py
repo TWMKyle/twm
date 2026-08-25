@@ -107,7 +107,7 @@ st.markdown(
 
 html_photo_stack = '<div class="photo-scroll-container">'
 for url in wedding_photos:
-    html_photo_stack += f'<img src="{"https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg"}" class="portrait-stack-img" />'
+    html_photo_stack += f'<img src="{url}" class="portrait-stack-img" />'
 html_photo_stack += '</div>'
 
 # 2. Inject the scroll stack container right into the side panel
