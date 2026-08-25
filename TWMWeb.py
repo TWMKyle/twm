@@ -80,13 +80,13 @@ st.markdown(
         /* FIX: Removed the hardcoded background-image property that was breaking the loop */
     }}
 
-    /* TARGET THE SIDEBAR CONTAINER */
     [data-testid="stSidebar"] {{
-        background-image: url('{img_srcp}') !important;
-        background-size: contain !important;        /* Stretches image to fill panel */
-        background-position: center !important;     /* Centers the graphic focus */
-        background-repeat: no-repeat !important;   /* Prevents tiling of the asset */
-        background-attachment: fixed !important;    /* Keeps image still while scrolling text */
+        background-image: url('{sidebar_bg_image}') !important;
+        background-size: contain !important;     /* CHANGE THIS: Fits the whole image */
+        background-position: top center !important; /* Pins it neatly to the top edge */
+        background-repeat: no-repeat !important;  /* Stops it from tiling vertically */
+        background-attachment: scroll !important; /* Lets it scroll away naturally */
+        background-color: #FDF6E2 !important;     /* Fallback solid background color below the image */
     }}
 
     /* OPTIONAL OVERLAY: Makes text highly readable over a busy image background */
