@@ -126,7 +126,6 @@ st.markdown(
         border-radius: 10px;
     }}
     
-    /* 5. MOSS GREEN & METALLIC GOLD BUTTONS */
     div[data-testid="stBaseButton-primary"] button,
     div[data-testid="stBaseButton-secondary"] button,
     [data-testid="stAppViewBlockContainer"] button,
@@ -134,14 +133,43 @@ st.markdown(
         background-color: #4A5D4E !important;    
         border: 2px solid #D4AF37 !important;    
         border-radius: 8px !important;           
-        font-family: 'Cormorant Garamond', serif !important; /* Matches premium body text */
-        font-size: 0.9rem !important;            /* SHRUNK: Smaller elegant font sizing */
-        text-transform: uppercase !important;    /* Optional uppercase for wedding invitation feel */
-        letter-spacing: 0.05rem !important;
-        font-weight: 600 !important;
-        padding: 0.4rem 1.2rem !important;       /* SHRUNK: Smaller button body bounds */
+        font-family: 'Cormorant Garamond', serif !important; 
+        padding: 0.35rem 1rem !important;        /* Tighter button body bounds */
         transition: all 0.3s ease !important;    
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+    }}
+
+    /* FORCE ALL NESTED TEXT CHANNELS INSIDE BUTTONS TO BE WHITE AND SMALLER */
+    div[data-testid="stBaseButton-primary"] button p,
+    div[data-testid="stBaseButton-secondary"] button p,
+    button p,
+    button div,
+    button span,
+    button [data-testid="stMarkdownContainer"] {{
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important; 
+        font-size: 0.75rem !important;           /* REDUCED: Shrunk from 0.9rem to 0.75rem */
+        font-weight: 600 !important;
+        letter-spacing: 0.08rem !important;      /* Elegant letter spacing for smaller font sizes */
+        text-transform: uppercase !important;    
+    }}
+
+    /* Interactive Hover State */
+    div[data-testid="stBaseButton-primary"] button:hover,
+    div[data-testid="stBaseButton-secondary"] button:hover,
+    button:hover {{
+        background-color: #3B4B3E !important;    
+        border-color: #F3E5AB !important;        
+        box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; 
+        transform: translateY(-1px);              
+        cursor: pointer;
+    }}
+    
+    /* Ensure smaller text stays white on hover */
+    button:hover [data-testid="stMarkdownContainer"],
+    button:hover p {{
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
     }}
 
     /* Force every possible text element inside the button container to be White */
