@@ -62,13 +62,15 @@ st.markdown(
     .portrait-stack-img {{
         width: 100%;
         height: auto;
-        aspect-ratio: 2 / 3;        /* Forces a standard elegant portrait frame */
+        aspect-ratio: 2 / 3;        /* Forces an elegant portrait frame */
         object-fit: cover;          /* Prevents compression squishing */
         border-radius: 8px;
         margin-bottom: 0.75rem;     /* Space between stacked photos */
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
         display: block;
+        /* FIX: Removed the hardcoded background-image property that was breaking the loop */
     }}
+
 
     /* Elegant custom scrollbar tailoring for modern web browsers */
     .photo-scroll-container::-webkit-scrollbar {{
