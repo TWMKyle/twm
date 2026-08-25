@@ -24,6 +24,19 @@ st.markdown(
         background-repeat: no-repeat !important;
         background-attachment: fixed !important;
     }}
+
+    /* Target the main st.title */
+    h1, .stApp h1 {{
+        color: #B76E79 !important; /* Rose Gold color */
+        font-family: 'Georgia', serif; /* Optional: Elegant wedding font */
+    }}
+
+    /* Target the st.write body text */
+    p, .stApp p {{
+        color: #333333 !important; /* Soft Charcoal dark text */
+        font-size: 1.1rem;
+    }}
+    
     </style>
     """,
     unsafe_allow_html=True
