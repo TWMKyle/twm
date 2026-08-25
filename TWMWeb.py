@@ -217,11 +217,16 @@ gc = gspread.service_account_from_dict(credentials)
 # Page configuration
 st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
 
+# 1. Open a custom styling box for the headers
+st.markdown('<div class="header-silhouette-box">', unsafe_allow_html=True)
 
-
-# App Header
-st.title("💍 The Wedding Machine")
+# 2. Render your standard Streamlit header elements natively inside the box wrapper
+st.title(":material/ring: The Wedding Machine")
 st.write("Welcome! I hope you are as excited as us! Check out this page!")
+
+# 3. Close the custom styling box wrapper
+st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 # Input Section
