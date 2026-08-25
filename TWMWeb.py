@@ -167,23 +167,40 @@ st.markdown(
     }}
 
     .header-silhouette-box {{
-        background-color: rgba(255, 255, 255, 0.15) !important; /* Soft white silhouette backdrop */
-        backdrop-filter: blur(8px) !important;                  /* Premium frosted glass blur effect */
-        -webkit-backdrop-filter: blur(8px) !important;          /* Safari web browser rendering fix */
-        border-radius: 16px !important;                          /* Elegant rounded container corners */
-        padding: 2rem 2.5rem !important;                        /* Balanced text layout padding bounds */
-        border: 1px solid rgba(255, 255, 255, 0.25) !important; /* Extremely thin subtle highlight frame line */
-        box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1) !important;  /* Soft luxury separation shadow effect */
-        margin-bottom: 2rem !important;                          /* Spacing between header card and buttons below */
-        text-align: center !important;                           /* Optional: Centers your titles elegantly */
+        background-color: rgba(255, 255, 255, 0.65) !important; /* Premium semi-transparent white backdrop */
+        backdrop-filter: blur(12px) !important;                  
+        -webkit-backdrop-filter: blur(12px) !important;          
+        border-radius: 16px !important;                          
+        padding: 2rem 2.5rem !important;                        
+        border: 1px solid rgba(255, 255, 255, 0.4) !important; 
+        box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08) !important;  
+        margin-bottom: 2.5rem !important;                          
+        text-align: center !important;                           
+        width: 100% !important;
+        box-sizing: border-box !important;
     }}
 
-    /* Override the main panel white text rule specifically inside the silhouette box for optimal reading contrast */
-    .header-silhouette-box p {{
-        color: #FFFFFF !important;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4) !important; /* Soft text shadowing for absolute clarity */
+    /* Target the Title directly inside the custom HTML layout block */
+    .header-silhouette-box h1 {{
+        color: #D4AF37 !important;
+        font-family: 'Pinyon Script', cursive !important;
+        font-size: 3.4rem !important;
+        margin-top: 0px !important;
+        margin-bottom: 0.5rem !important;
+        font-weight: normal !important;
     }}
-    </style>
+
+    /* Target the Paragraph Description text directly inside the custom HTML layout block */
+    .header-silhouette-box p {{
+        color: #2C3E50 !important; /* Crisp high-contrast charcoal reading text */
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        margin: 0px !important;
+    }}
+        
+        
+        </style>
     """,
     unsafe_allow_html=True
 )
