@@ -46,7 +46,7 @@ st.markdown(
     /* 2. MAIN TITLES & HEADERS (SHRUNK PINYON SCRIPT) */
     h1, .stApp h1 {{
         color: #D4AF37 !important; /* Elegant Gold instead of plain white */
-        font-family: 'Pinyon Script', cursive !important; 
+        font-family: 'Cormorant Garamond', cursive !important; 
         font-size: 3.2rem !important; /* SHRUNK: Delicate calligraphic layout */
         font-weight: normal !important;
         line-height: 1.1 !important;
