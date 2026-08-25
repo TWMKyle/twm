@@ -27,7 +27,7 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-
+)
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
@@ -64,6 +64,7 @@ gc = gspread.service_account_from_dict(credentials)
 
 # Page configuration
 st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
+
 
 
 # App Header
