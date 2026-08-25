@@ -294,12 +294,12 @@ gc = gspread.service_account_from_dict(credentials)
 st.markdown(
     """
     <div class="header-silhouette-box">
- 
+        <!-- 1. The Calligraphic Gold Title with Inline Ring Icon -->
         <h1>
-            <span style="font-family: Cormorant Garamond, sans-serif; font-size: 2.2rem; vertical-align: middle; margin-right: 10px;">💍</span>The Wedding Machine
+            <span style="font-family: Arial, sans-serif; font-size: 2.2rem; vertical-align: middle; margin-right: 10px;">💍</span>The Wedding Machine
         </h1>
         
-        
+        <!-- Kyle & Cialene's Wedding Page -->
         <p>Welcome! I hope you are as excited as us! Check out this page!</p>
     </div>
     """,
