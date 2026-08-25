@@ -111,11 +111,11 @@ st.markdown(
 
      /* 2. TYPOGRAPHY SCHEME */
     h1, .stApp h1 {{
-        color: #D4AF37 !important; 
+        color: #FFFFFF !important; 
         font-family: 'Georgia', serif; 
     }}
     h1 span[data-testid="stMarkdownMaterialIcon"] {{
-        color: #D4AF37 !important;
+        color: #FFFFFF !important;
         -webkit-text-fill-color: #D4AF37 !important;
     }}
     p, .stApp p, [data-testid="stSidebar"] p {{
