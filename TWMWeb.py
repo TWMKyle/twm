@@ -27,13 +27,7 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-)
 
-# 3. Create the foreground profile element sitting ON TOP of the full-page image
-st.markdown(
-    '<div class="wedding-card"><h3>Kyle</h3><p>Music Leader</p></div>',
-    unsafe_allow_html=True
-)
 st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 # Bypass SSL certificate verification
@@ -70,58 +64,6 @@ gc = gspread.service_account_from_dict(credentials)
 
 # Page configuration
 st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
-
-def set_background(image_file):
-    # Determine the absolute directory path where TWMWeb.py is running
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    full_image_path = os.path.join(script_dir, image_file)
-
-    # Debug: Check if the file is found. If missing, it will print visually on screen.
-    if not os.path.exists(full_image_path):
-        st.error(f"❌ Looking for image at: {full_image_path} but it was NOT found!")
-        return
-
-    # If found, read and encode the asset
-    with open(full_image_path, "rb") as f:
-        encoded_string = base64.b64encode(f.read()).decode()
-
-    st.markdown(
-        f"""
-        <style>
-         header, [data-testid="stHeader"], [data-testid="stHeaderActionElements"], .stDeployButton {{
-            display: none !important;
-            visibility: hidden !important;
-            height: 0px !important;
-        }}
-        
-        footer, [data-testid="stManageAppButton"], .stManageAppButton {{
-            display: none !important;
-            visibility: hidden !important;
-            height: 0px !important;
-        }}
- 
-        [data-testid="stAppViewContainer"], .stApp, #root {{
-            background-image: url("data:image/jpeg;base64,{encoded_string}") !important;
-            background-size: cover !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            background-attachment: fixed !important;
-        }}
-
-        [data-testid="stHeader"], [data-testid="stMainBlockContainer"], .stMain, .stMainBlockContainer, [data-testid="stVerticalBlock"] {{
-            background-color: transparent !important;
-            background: transparent !important;
-        }}
-
-        [data-testid="stAppViewBlockContainer"] > div {{
-            background: transparent !important;
-            background-color: transparent !important;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
 
 
 # App Header
