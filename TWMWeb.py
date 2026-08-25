@@ -123,6 +123,39 @@ st.markdown(
         font-size: 1.1rem;
     }}
     
+        /* 3. MOSS GREEN & METALLIC GOLD BUTTONS */
+    div[data-testid="stBaseButton-primary"] button,
+    div[data-testid="stBaseButton-secondary"] button,
+    [data-testid="stAppViewBlockContainer"] button,
+    button {{
+        background-color: #4A5D4E !important;    /* Solid Moss Green */
+        color: #FFFFFF !important;               /* Clean white text for readability */
+        border: 2px solid #D4AF37 !important;    /* Metallic Gold Border */
+        border-radius: 8px !important;           /* Soft elegant rounded corners */
+        font-family: 'Georgia', serif !important;
+        font-weight: bold !important;
+        padding: 0.5rem 1.5rem !important;
+        transition: all 0.3s ease !important;    /* Smooth hover effect */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+    }}
+
+    /* Make text inside buttons explicitly white if nested in paragraph elements */
+    div[data-testid="stBaseButton-primary"] button p,
+    div[data-testid="stBaseButton-secondary"] button p,
+    button p {{
+        color: #FFFFFF !important;
+    }}
+
+    /* Interactive Hover State: Darker moss green and a glowing gold shadow */
+    div[data-testid="stBaseButton-primary"] button:hover,
+    div[data-testid="stBaseButton-secondary"] button:hover,
+    button:hover {{
+        background-color: #3B4B3E !important;    /* Deeper Moss Green on hover */
+        border-color: #F3E5AB !important;        /* Brighter Champagne Gold border on hover */
+        box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; /* Elegant gold glow */
+        transform: translateY(-2px);              /* Subtle lift animation */
+        cursor: pointer;
+    }}
     
     </style>
     """,
