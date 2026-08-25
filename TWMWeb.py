@@ -231,19 +231,20 @@ credentials = {
 # Authenticate the secure writer client immediately on app startup
 gc = gspread.service_account_from_dict(credentials)
 
-# Page configuration
-st.set_page_config(page_title="The Wedding Machine", page_icon="💍", layout="centered")
-
-# 1. Open a custom styling box for the headers
-st.markdown('<div class="header-silhouette-box">', unsafe_allow_html=True)
-
-# 2. Render your standard Streamlit header elements natively inside the box wrapper
-st.title(":material/ring: The Wedding Machine")
-st.write("Welcome! I hope you are as excited as us! Check out this page!")
-
-# 3. Close the custom styling box wrapper
-st.markdown('</div>', unsafe_allow_html=True)
-
+st.markdown(
+    """
+    <div class="header-silhouette-box">
+        <!-- 1. The Calligraphic Gold Title with Inline Ring Icon -->
+        <h1>
+            <span style="font-family: Arial, sans-serif; font-size: 2.2rem; vertical-align: middle; margin-right: 10px;">💍</span>The Wedding Machine
+        </h1>
+        
+        <!-- 2. The Elegant Welcome Subtitle Paragraph -->
+        <p>Welcome! I hope you are as excited as us! Check out this page!</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 # Input Section
