@@ -45,7 +45,7 @@ st.markdown(
     /* Target the main st.title */
     h1, .stApp h1 {{
         color: #FFFFFF !important; /* Rose Gold color */
-        font-family: 'Georgia', serif; /* Optional: Elegant wedding font */
+        font-family: 'Futura', serif; /* Optional: Elegant wedding font */
     }}
 
     /* Target the st.write body text */
@@ -112,7 +112,7 @@ st.markdown(
      /* 2. TYPOGRAPHY SCHEME */
     h1, .stApp h1 {{
         color: #FFFFFF !important; 
-        font-family: 'Georgia', serif; 
+        font-family: 'Futura', serif; 
     }}
     h1 span[data-testid="stMarkdownMaterialIcon"] {{
         color: #FFFFFF !important;
@@ -132,7 +132,7 @@ st.markdown(
         color: #FFFFFF !important;               /* Clean white text for readability */
         border: 2px solid #D4AF37 !important;    /* Metallic Gold Border */
         border-radius: 8px !important;           /* Soft elegant rounded corners */
-        font-family: 'Georgia', serif !important;
+        font-family: 'Futura', serif !important;
         font-weight: bold !important;
         padding: 0.5rem 1.5rem !important;
         transition: all 0.3s ease !important;    /* Smooth hover effect */
