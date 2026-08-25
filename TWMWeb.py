@@ -39,21 +39,54 @@ st.markdown(
     }}
 
 
-    /* 1. SIDEBAR BACKGROUND IMAGE CUSTOMIZATION */
-    [data-testid="stSidebar"] {{
-        background-image: url('{img_srcp}') !important;
-        background-size: cover !important;        /* Options: 'cover', 'contain', or specific size like '200px' */
-        background-position: center !important;     /* Options: 'top', 'bottom', 'center', 'top right' */
-        background-repeat: no-repeat !important;
-        background-attachment: scroll !important;  /* 'fixed' locks it, 'scroll' lets it move with text */
+    /* 1. CUSTOM PORTRAIT SCROLLABLE STACK */
+    .photo-scroll-container {{
+        max-height: 450px;          /* Maximum height of the viewing window */
+        overflow-y: scroll;         /* Enables vertical scrolling */
+        overflow-x: hidden;         /* Hides horizontal scroll spillover */
+        border-radius: 12px;
+        padding: 0.5rem;
+        background-color: #FAFAFA;  /* Muted background backing track */
+        border: 1px solid #EAEAEA;
+        margin-bottom: 1.5rem;
     }}
 
-    /* Optional: Add a subtle overlay to the sidebar to make text more readable over the image */
-    [data-testid="stSidebarUserContent"] {{
-        background-color: rgba(255, 255, 255, 0.75) !important; /* White tint with 75% opacity */
-        padding: 2rem 1.5rem !important;
+    /* Style the portrait images inside the stack */
+    .portrait-stack-img {{
+        width: 100%;
+        height: auto;
+        aspect-ratio: 2 / 3;        /* Forces a standard elegant portrait frame */
+        object-fit: cover;          /* Prevents compression squishing */
+        border-radius: 8px;
+        margin-bottom: 0.75rem;     /* Space between stacked photos */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+        display: block;
+    }}
+
+    /* Elegant custom scrollbar tailoring for modern web browsers */
+    .photo-scroll-container::-webkit-scrollbar {{
+        width: 6px;
+    }}
+    .photo-scroll-container::-webkit-scrollbar-track {{
+        background: transparent;
+    }}
+    .photo-scroll-container::-webkit-scrollbar-thumb {{
+        background: #D4AF37;        /* Gold-tinted slider mechanism */
         border-radius: 10px;
-        margin: 1rem;
+    }}
+
+     /* 2. TYPOGRAPHY SCHEME */
+    h1, .stApp h1 {{
+        color: #D4AF37 !important; 
+        font-family: 'Georgia', serif; 
+    }}
+    h1 span[data-testid="stMarkdownMaterialIcon"] {{
+        color: #D4AF37 !important;
+        -webkit-text-fill-color: #D4AF37 !important;
+    }}
+    p, .stApp p, [data-testid="stSidebar"] p {{
+        color: #333333 !important; 
+        font-size: 1.1rem;
     }}
     
     
