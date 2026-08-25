@@ -28,11 +28,12 @@ st.sidebar.write("📅 Date: June 20, 2027")
 st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
 st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
 
-
-# 2. Inject styling to target the ENTIRE Streamlit app frame
 st.markdown(
     f"""
     <style>
+    /* 1. IMPORT ELEGANT WEDDING FONTS FROM GOOGLE FONTS */
+    @import url('https://googleapis.com');
+
     /* This selector targets the entire background canvas of Streamlit */
     [data-testid="stAppViewContainer"] {{
         background-image: url('{img_src1}') !important;
@@ -42,27 +43,44 @@ st.markdown(
         background-attachment: fixed !important;
     }}
 
-    /* Target the main st.title */
+    /* 2. MAIN TITLES & HEADERS (SHRUNK PINYON SCRIPT) */
     h1, .stApp h1 {{
-        color: #FFFFFF !important; /* Rose Gold color */
-        font-family: 'Futura', serif; /* Optional: Elegant wedding font */
+        color: #D4AF37 !important; /* Elegant Gold instead of plain white */
+        font-family: 'Pinyon Script', cursive !important; 
+        font-size: 3.2rem !important; /* SHRUNK: Delicate calligraphic layout */
+        font-weight: normal !important;
+        line-height: 1.1 !important;
     }}
 
-    /* Target the st.write body text */
-    p, .stApp p {{
-        color: #FFFFFF !important; /* Soft Charcoal dark text */
-        font-size: 1.1rem;
+    /* Make sure the material ring icon scales down with the title text */
+    h1 span[data-testid="stMarkdownMaterialIcon"] {{
+        color: #D4AF37 !important;
+        -webkit-text-fill-color: #D4AF37 !important;
+        font-size: 2.2rem !important; /* SHRUNK */
+        vertical-align: middle !important;
     }}
 
+    /* 3. BODY TEXT & DESCRIPTIONS (SHRUNK LUXURY CORMORANT GARAMOND) */
+    p, .stApp p, [data-testid="stSidebar"] p {{
+        color: #333333 !important; /* Charcoal font for optimal reading contrast */
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 0.95rem !important; /* SHRUNK: Clean, delicate book layout */
+        letter-spacing: 0.02rem !important;
+    }}
+    
+    /* Ensure main panel text over dark images stays readable if needed */
+    .stAppViewBlockContainer p {{
+        color: #FFFFFF !important; /* Keeps main panel text white against background image */
+    }}
 
-    /* 1. CUSTOM PORTRAIT SCROLLABLE STACK */
+    /* 4. CUSTOM PORTRAIT SCROLLABLE STACK */
     .photo-scroll-container {{
-        max-height: 450px;          /* Maximum height of the viewing window */
-        overflow-y: scroll;         /* Enables vertical scrolling */
-        overflow-x: hidden;         /* Hides horizontal scroll spillover */
+        max-height: 400px;          /* DECREASED: Made container shorter */
+        overflow-y: scroll;         
+        overflow-x: hidden;         
         border-radius: 12px;
         padding: 0.5rem;
-        background-color: #FAFAFA;  /* Muted background backing track */
+        background-color: #FAFAFA;  
         border: 1px solid #EAEAEA;
         margin-bottom: 1.5rem;
     }}
@@ -71,30 +89,29 @@ st.markdown(
     .portrait-stack-img {{
         width: 100%;
         height: auto;
-        aspect-ratio: 2 / 3;        /* Forces an elegant portrait frame */
-        object-fit: cover;          /* Prevents compression squishing */
+        aspect-ratio: 2 / 3;        
+        object-fit: cover;          
         border-radius: 8px;
-        margin-bottom: 0.75rem;     /* Space between stacked photos */
+        margin-bottom: 0.75rem;     
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
         display: block;
-        /* FIX: Removed the hardcoded background-image property that was breaking the loop */
     }}
 
     [data-testid="stSidebar"] {{
         background-image: url('{img_srcp}') !important;
-        background-size: contain !important;     /* CHANGE THIS: Fits the whole image */
-        background-position: top center !important; /* Pins it neatly to the top edge */
-        background-repeat: no-repeat !important;  /* Stops it from tiling vertically */
-        background-attachment: scroll !important; /* Lets it scroll away naturally */
-        background-color: #FDF6E2 !important;     /* Fallback solid background color below the image */
+        background-size: contain !important;     
+        background-position: top center !important; 
+        background-repeat: no-repeat !important;  
+        background-attachment: scroll !important; 
+        background-color: #FDF6E2 !important;     
     }}
 
-    /* OPTIONAL OVERLAY: Makes text highly readable over a busy image background */
+    /* OVERLAY: Makes text highly readable over a busy image background */
     [data-testid="stSidebarUserContent"] {{
-        background-color: rgba(255, 255, 255, 0.8) !important; /* White tint with 80% opacity */
-        padding: 2rem 1.5rem !important;
+        background-color: rgba(255, 255, 255, 0.8) !important; 
+        padding: 1.5rem 1.2rem !important; /* DECREASED: Tighter side layout padding */
         border-radius: 12px;
-        margin: 1rem;
+        margin: 0.75rem;
     }}
 
     /* Elegant custom scrollbar tailoring for modern web browsers */
@@ -105,41 +122,29 @@ st.markdown(
         background: transparent;
     }}
     .photo-scroll-container::-webkit-scrollbar-thumb {{
-        background: #D4AF37;        /* Gold-tinted slider mechanism */
+        background: #D4AF37;        
         border-radius: 10px;
     }}
-
-     /* 2. TYPOGRAPHY SCHEME */
-    h1, .stApp h1 {{
-        color: #FFFFFF !important; 
-        font-family: 'Futura', serif; 
-    }}
-    h1 span[data-testid="stMarkdownMaterialIcon"] {{
-        color: #FFFFFF !important;
-        -webkit-text-fill-color: #D4AF37 !important;
-    }}
-    p, .stApp p, [data-testid="stSidebar"] p {{
-        color: #333333 !important; 
-        font-size: 1.1rem;
-    }}
     
-        /* 3. MOSS GREEN & METALLIC GOLD BUTTONS */
+    /* 5. MOSS GREEN & METALLIC GOLD BUTTONS */
     div[data-testid="stBaseButton-primary"] button,
     div[data-testid="stBaseButton-secondary"] button,
     [data-testid="stAppViewBlockContainer"] button,
     button {{
-        background-color: #4A5D4E !important;    /* Solid Moss Green */
-        color: #FFFFFF !important;               /* Clean white text for readability */
-        border: 2px solid #D4AF37 !important;    /* Metallic Gold Border */
-        border-radius: 8px !important;           /* Soft elegant rounded corners */
-        font-family: 'Futura', serif !important;
-        font-weight: bold !important;
-        padding: 0.5rem 1.5rem !important;
-        transition: all 0.3s ease !important;    /* Smooth hover effect */
+        background-color: #4A5D4E !important;    
+        border: 2px solid #D4AF37 !important;    
+        border-radius: 8px !important;           
+        font-family: 'Cormorant Garamond', serif !important; /* Matches premium body text */
+        font-size: 0.9rem !important;            /* SHRUNK: Smaller elegant font sizing */
+        text-transform: uppercase !important;    /* Optional uppercase for wedding invitation feel */
+        letter-spacing: 0.05rem !important;
+        font-weight: 600 !important;
+        padding: 0.4rem 1.2rem !important;       /* SHRUNK: Smaller button body bounds */
+        transition: all 0.3s ease !important;    
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
     }}
 
-     /* FIX: Force every possible text element inside the button container to be White */
+    /* Force every possible text element inside the button container to be White */
     div[data-testid="stBaseButton-primary"] button p,
     div[data-testid="stBaseButton-secondary"] button p,
     button p,
@@ -147,17 +152,17 @@ st.markdown(
     button span,
     button [data-testid="stMarkdownContainer"] {{
         color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important; /* Forces Safari/Chrome compatibility */
+        -webkit-text-fill-color: #FFFFFF !important; 
     }}
 
-    /* Interactive Hover State: Darker moss green and a glowing gold shadow */
+    /* Interactive Hover State */
     div[data-testid="stBaseButton-primary"] button:hover,
     div[data-testid="stBaseButton-secondary"] button:hover,
     button:hover {{
-        background-color: #3B4B3E !important;    /* Deeper Moss Green on hover */
-        border-color: #F3E5AB !important;        /* Brighter Champagne Gold border on hover */
-        box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; /* Elegant gold glow */
-        transform: translateY(-2px);              /* Subtle lift animation */
+        background-color: #3B4B3E !important;    
+        border-color: #F3E5AB !important;        
+        box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; 
+        transform: translateY(-1px);              /* SHRUNK: Smaller lift track gap */
         cursor: pointer;
     }}
     
