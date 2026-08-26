@@ -343,8 +343,6 @@ credentials = {
 # Authenticate the secure writer client immediately on app startup
 gc = gspread.service_account_from_dict(credentials)
 
-st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
-
 st.markdown(
     """
     <div class="header-silhouette-box">
