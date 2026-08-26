@@ -328,7 +328,7 @@ st.markdown(
 
 
 # Input Section
-search_term = st.text_input("Enter your Name:", placeholder="e.g., Pat, Kyle").strip()
+search_term = st.text_input("Please enter your name:", placeholder="e.g., Pat, Kyle").strip()
 search_button = st.button("Search Your Name", type="primary")
 
 # Search Logic
