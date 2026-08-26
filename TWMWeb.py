@@ -5,8 +5,48 @@ import os
 import random
 from PIL import Image
 import streamlit as st
+import pandas as pd
+import streamlit as st
+from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
-# Make sure variables img_src1 and img_srcp are defined before running this snippet
+
+wedding_photos = [
+
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/bikephoto.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/671741678_818147120879329_7560801041831527780_n.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_8287 2.JPG",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_82882.JPG",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-7.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-8.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-9.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-10.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-11.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-12.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-13.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-14.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-15.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-16.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-17.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-18.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-19.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-20.jpg",
+
+
+]
+
+img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
+img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/rustic-barn-wood-wallpaper-showcasing-natural-browns-textured-finish-perfect-cozy-interiors-countrythemed-decor-ideas_184076-37815.jpg.avif"
+
+
+
+# You can stack multiple images or add other sidebar widgets below it
+st.sidebar.write("### Wedding Details")
+st.sidebar.write("📍 Venue: The Garden Pavilion")
+st.sidebar.write("📅 Date: June 20, 2027")
+# Link opening utility (replaces webbrowser.open)
+st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
+st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
 
 import streamlit as st
 
@@ -229,262 +269,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-import pandas as pd
-import streamlit as st
-from streamlit_gsheets import GSheetsConnection, gsheets_connection
-
-
-wedding_photos = [
-
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/bikephoto.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/671741678_818147120879329_7560801041831527780_n.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_8287 2.JPG",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_82882.JPG",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-7.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-8.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-9.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-10.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-11.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-12.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-13.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-14.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-15.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-16.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-17.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-18.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-19.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-20.jpg",
-
-
-]
-
-img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
-img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/rustic-barn-wood-wallpaper-showcasing-natural-browns-textured-finish-perfect-cozy-interiors-countrythemed-decor-ideas_184076-37815.jpg.avif"
-
-
-
-# You can stack multiple images or add other sidebar widgets below it
-st.sidebar.write("### Wedding Details")
-st.sidebar.write("📍 Venue: The Garden Pavilion")
-st.sidebar.write("📅 Date: June 20, 2027")
-# Link opening utility (replaces webbrowser.open)
-st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
-st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
-
-st.markdown(
-    f"""
-    <style>
-    /* 1. IMPORT ELEGANT WEDDING FONTS FROM GOOGLE FONTS */
-    @import url('https://googleapis.com');
-
-    /* This selector targets the entire background canvas of Streamlit */
-    [data-testid="stAppViewContainer"] {{
-        background-image: url('{img_src1}') !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-    }}
-
-    /* 2. MAIN TITLES & HEADERS (SHRUNK PINYON SCRIPT) */
-    h1, .stApp h2 {{
-        color: #D4AF37 !important; /* Elegant Gold instead of plain white */
-        font-family: 'Cormorant Garamond', cursive !important; 
-        font-size: 3.2rem !important; /* SHRUNK: Delicate calligraphic layout */
-        font-weight: normal !important;
-        line-height: 1.1 !important;
-    }}
-
-    /* Make sure the material ring icon scales down with the title text */
-    h1 span[data-testid="stMarkdownMaterialIcon"] {{
-        color: #D4AF37 !important;
-        -webkit-text-fill-color: #D4AF37 !important;
-        font-size: 2.2rem !important; /* SHRUNK */
-        vertical-align: middle !important;
-    }}
-
-    /* 3. MAIN PANEL BODY TEXT & DESCRIPTIONS (STRICTLY FOR CONTENT CONTAINER ONLY) */
-    .stMain p,
-    .stMain [data-testid="stMarkdownContainer"] p,
-    .stAppViewBlockContainer p {{
-        color: #FFFFFF !important; /* Forces normal st.write text to be White on background */
-        font-family: 'Cormorant Garamond', serif !important;
-        font-size: 0.95rem !important;
-        letter-spacing: 0.02rem !important;
-    }}
-
-    /* 4. SIDEBAR SPECIFIC TEXT: REMAIN SOLID CHARCOAL BLACK */
-    [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {{
-        color: #333333 !important; /* Keeps sidebar fonts dark */
-        -webkit-text-fill-color: #333333 !important;
-        font-family: 'Cormorant Garamond', serif !important;
-    }}
-
-    /* 5. CUSTOM PORTRAIT SCROLLABLE STACK (REFINED FOR ELEGANCE) */
-    .photo-scroll-container {{
-        max-height: 400px !important;          
-        overflow-y: scroll !important;         
-        overflow-x: hidden !important;         
-        border-radius: 16px !important;
-        padding: 0.8rem !important;
-        background-color: #FCFBF7 !important;  /* Soft Warm White Canvas backdrop */
-        border: 1px solid rgba(212, 175, 55, 0.3) !important; /* Ultra-fine gold accent border */
-        margin-bottom: 1.5rem !important;
-        box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.02) !important;
-    }}
-
-    /* Style the portrait images inside the stack with smooth transitional physics */
-    .portrait-stack-img {{
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 2 / 3 !important;        
-        object-fit: cover !important;          
-        border-radius: 8px !important;
-        margin-bottom: 1rem !important;     
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04) !important;
-        display: block !important;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
-    }}
-
-    /* Delicate lift animation on picture hover */
-    .portrait-stack-img:hover {{
-        transform: scale(1.02) translateY(-2px) !important;
-        box-shadow: 0px 8px 20px rgba(212, 175, 55, 0.15) !important;
-    }}
-
-    [data-testid="stSidebar"] {{
-        background-image: url('{img_srcp}') !important;
-        background-size: contain !important;     
-        background-position: top center !important; 
-        background-repeat: no-repeat !important;  
-        background-attachment: scroll !important; 
-        background-color: #FDF6E2 !important;     
-    }}
-
-    /* OVERLAY: Makes text highly readable over a busy image background */
-    [data-testid="stSidebarUserContent"] {{
-        background-color: rgba(255, 255, 255, 0.8) !important; 
-        padding: 1.5rem 1.2rem !important; /* DECREASED: Tighter side layout padding */
-        border-radius: 12px !important;
-        margin: 0.75rem !important;
-    }}
-
-    /* Elegant custom scrollbar tailoring for modern web browsers */
-    .photo-scroll-container::-webkit-scrollbar {{
-        width: 4px !important; /* Sleeker scrollbar track line */
-    }}
-    .photo-scroll-container::-webkit-scrollbar-track {{
-        background: transparent !important;
-    }}
-    .photo-scroll-container::-webkit-scrollbar-thumb {{
-        background: rgba(212, 175, 55, 0.4) !important; /* Subtler gold slider accent */        
-        border-radius: 10px !important;
-    }}
-    
-    div[data-testid="stBaseButton-primary"] button,
-    div[data-testid="stBaseButton-secondary"] button,
-    [data-testid="stAppViewBlockContainer"] button,
-    button {{
-        background-color: #4A5D4E !important;    
-        border: 2px solid #D4AF37 !important;    
-        border-radius: 8px !important;           
-        font-family: 'Cormorant Garamond', serif !important; 
-        padding: 0.35rem 1rem !important;        /* Tighter button body bounds */
-        transition: all 0.3s ease !important;    
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
-    }}
-
-    /* FORCE ALL NESTED TEXT CHANNELS INSIDE BUTTONS TO BE WHITE AND SMALLER */
-    div[data-testid="stBaseButton-primary"] button p,
-    div[data-testid="stBaseButton-secondary"] button p,
-    button p,
-    button div,
-    button span,
-    button [data-testid="stMarkdownContainer"],
-    .stApp div[data-testid="stBaseButton-primary"] button p,
-    .stApp div[data-testid="stBaseButton-secondary"] button p,
-    .stApp button p,
-    .stApp button div,
-    .stApp button span,
-    .stApp button [data-testid="stMarkdownContainer"] {{
-        color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important; 
-        font-size: 0.75rem !important;           /* REDUCED: Shrunk from 0.9rem to 0.75rem */
-        font-weight: 600 !important;
-        letter-spacing: 0.08rem !important;      /* Elegant letter spacing for smaller font sizes */
-        text-transform: uppercase !important;    
-    }}
-
-    /* Interactive Hover State */
-    div[data-testid="stBaseButton-primary"] button:hover,
-    div[data-testid="stBaseButton-secondary"] button:hover,
-    button:hover {{
-        background-color: #3B4B3E !important;    
-        border-color: #F3E5AB !important;        
-        box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; 
-        transform: translateY(-1px) !important;              
-        cursor: pointer !important;
-    }}
-    
-    /* Ensure smaller text stays white on hover */
-    button:hover [data-testid="stMarkdownContainer"],
-    button:hover p {{
-        color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important;
-    }}
-
-    .header-silhouette-box {{
-        background-color: rgba(255, 255, 255, 0) !important; /* Premium semi-transparent white backdrop */
-        backdrop-filter: blur(12px) !important;                  
-        -webkit-backdrop-filter: blur(12px) !important;          
-        border-radius: 16px !important;                          
-        padding: 2rem 2.5rem !important;                        
-        border: 1px solid rgba(255, 255, 255, 0.4) !important; 
-        box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.08) !important;  
-        margin-bottom: 2.5rem !important;                          
-        text-align: center !important;                           
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }}
-
-    /* Target the Title directly inside the custom HTML layout block */
-    .header-silhouette-box h1 {{
-        color: #D4AF37 !important;
-        font-family: 'Pinyon Script', cursive !important;
-        font-size: 3.4rem !important;
-        margin-top: 0px !important;
-        margin-bottom: 0.5rem !important;
-        font-weight: normal !important;
-    }}
-
-    /* Target the Paragraph Description text directly inside the custom HTML layout block */
-    .header-silhouette-box p {{
-        color: #2C3E50 !important; /* Crisp high-contrast charcoal reading text */
-        font-family: 'Cormorant Garamond', serif !important;
-        font-size: 1.1rem !important;
-        font-weight: 600 !important;
-        margin: 0px !important;
-    }}
-
-    /* 6. FORCE STREAMLIT ALERTS/SUCCESS BOX TEXT TO WHITE ONLY */
-    [data-testid="stNotification"] p, 
-    [data-testid="stAlert"] p,
-    [data-testid="stNotification"] span,
-    [data-testid="stAlert"] span,
-    div[data-testid="stAlertContainer"] p {{
-        color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 
 
 
