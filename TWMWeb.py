@@ -56,6 +56,10 @@ import streamlit as st
 
 # Make sure variables img_src1 and img_srcp are defined before running this snippet
 
+import streamlit as st
+
+# Make sure variables img_src1 and img_srcp are defined before running this snippet
+
 st.markdown(
     f"""
     <style>
@@ -89,7 +93,7 @@ st.markdown(
     }}
 
     /* 3. BODY TEXT & DESCRIPTIONS (SHRUNK LUXURY CORMORANT GARAMOND) */
-    p, .stApp p, [data-testid="stSidebar"] p {{
+    p, .stApp p {{
         color: #333333 !important; /* Charcoal font for optimal reading contrast */
         font-family: 'Cormorant Garamond', serif !important;
         font-size: 0.95rem !important; /* SHRUNK: Clean, delicate book layout */
@@ -255,9 +259,19 @@ st.markdown(
     [data-testid="stAlert"] *,
     div[data-testid="stElementBlock"] div[data-testid="stMarkdownContainer"] p,
     .stAppViewBlockContainer [data-testid="stMarkdownContainer"] p,
-    .stApp p {{
+    .stAppViewBlockContainer p {{
         color: #FFFFFF !important;
         -webkit-text-fill-color: #FFFFFF !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }}
+
+    /* 6. STRICT SIDEBAR FIX: RESTORE DARK BLACK/CHARCOAL FONTS ONLY ON THE SIDE PANEL */
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] div,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {{
+        color: #333333 !important;
+        -webkit-text-fill-color: #333333 !important;
         font-family: 'Cormorant Garamond', serif !important;
     }}
     </style>
