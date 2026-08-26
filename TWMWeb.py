@@ -47,6 +47,10 @@ st.sidebar.write("📅 Date: June 20, 2027")
 st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
 st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
 
+import streamlit as st
+
+# Make sure variables img_src1 and img_srcp are defined before running this snippet
+
 st.markdown(
     f"""
     <style>
@@ -92,28 +96,36 @@ st.markdown(
         color: #FFFFFF !important; /* Keeps main panel text white against background image */
     }}
 
-    /* 4. CUSTOM PORTRAIT SCROLLABLE STACK */
+    /* 4. CUSTOM PORTRAIT SCROLLABLE STACK (REFINED FOR ELEGANCE) */
     .photo-scroll-container {{
-        max-height: 400px;          /* DECREASED: Made container shorter */
+        max-height: 400px;          
         overflow-y: scroll;         
         overflow-x: hidden;         
-        border-radius: 12px;
-        padding: 0.5rem;
-        background-color: #FAFAFA;  
-        border: 1px solid #EAEAEA;
+        border-radius: 16px;
+        padding: 0.8rem;
+        background-color: #FCFBF7;  /* Soft Warm White Canvas backdrop */
+        border: 1px solid rgba(212, 175, 55, 0.25); /* Ultra-fine gold accent border */
         margin-bottom: 1.5rem;
+        box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.02);
     }}
 
-    /* Style the portrait images inside the stack */
+    /* Style the portrait images inside the stack with smooth transitional physics */
     .portrait-stack-img {{
         width: 100%;
         height: auto;
         aspect-ratio: 2 / 3;        
         object-fit: cover;          
         border-radius: 8px;
-        margin-bottom: 0.75rem;     
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1rem;     
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
         display: block;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }}
+
+    /* Delicate lift animation on picture hover */
+    .portrait-stack-img:hover {{
+        transform: scale(1.02) translateY(-2px);
+        box-shadow: 0px 8px 20px rgba(212, 175, 55, 0.15);
     }}
 
     [data-testid="stSidebar"] {{
@@ -135,13 +147,13 @@ st.markdown(
 
     /* Elegant custom scrollbar tailoring for modern web browsers */
     .photo-scroll-container::-webkit-scrollbar {{
-        width: 6px;
+        width: 4px; /* Sleeker scrollbar track line */
     }}
     .photo-scroll-container::-webkit-scrollbar-track {{
         background: transparent;
     }}
     .photo-scroll-container::-webkit-scrollbar-thumb {{
-        background: #D4AF37;        
+        background: rgba(212, 175, 55, 0.4); /* Subtler gold slider accent */        
         border-radius: 10px;
     }}
     
@@ -164,7 +176,13 @@ st.markdown(
     button p,
     button div,
     button span,
-    button [data-testid="stMarkdownContainer"] {{
+    button [data-testid="stMarkdownContainer"],
+    .stApp div[data-testid="stBaseButton-primary"] button p,
+    .stApp div[data-testid="stBaseButton-secondary"] button p,
+    .stApp button p,
+    .stApp button div,
+    .stApp button span,
+    .stApp button [data-testid="stMarkdownContainer"] {{
         color: #FFFFFF !important;
         -webkit-text-fill-color: #FFFFFF !important; 
         font-size: 0.75rem !important;           /* REDUCED: Shrunk from 0.9rem to 0.75rem */
@@ -189,28 +207,6 @@ st.markdown(
     button:hover p {{
         color: #FFFFFF !important;
         -webkit-text-fill-color: #FFFFFF !important;
-    }}
-
-    /* Force every possible text element inside the button container to be White */
-    div[data-testid="stBaseButton-primary"] button p,
-    div[data-testid="stBaseButton-secondary"] button p,
-    button p,
-    button div,
-    button span,
-    button [data-testid="stMarkdownContainer"] {{
-        color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important; 
-    }}
-
-    /* Interactive Hover State */
-    div[data-testid="stBaseButton-primary"] button:hover,
-    div[data-testid="stBaseButton-secondary"] button:hover,
-    button:hover {{
-        background-color: #3B4B3E !important;    
-        border-color: #F3E5AB !important;        
-        box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; 
-        transform: translateY(-1px);              /* SHRUNK: Smaller lift track gap */
-        cursor: pointer;
     }}
 
     .header-silhouette-box {{
@@ -246,49 +242,19 @@ st.markdown(
         margin: 0px !important;
     }}
 
-    .stApp div[data-testid="stBaseButton-primary"] button p,
-    .stApp div[data-testid="stBaseButton-secondary"] button p,
-    .stApp button p,
-    .stApp button div,
-    .stApp button span,
-    .stApp button [data-testid="stMarkdownContainer"],
-    button p,
-    button [data-testid="stMarkdownContainer"] {{
+    /* 5. FORCE STREAMLIT ALERTS, NOTIFICATIONS, AND MARKDOWNS INSIDE THEM TO WHITE */
+    [data-testid="stNotification"], 
+    [data-testid="stAlert"],
+    [data-testid="stAlert"] p,
+    [data-testid="stNotification"] p,
+    [data-testid="stAlert"] div,
+    [data-testid="stNotification"] div,
+    [data-testid="stAlert"] [data-testid="stMarkdownContainer"] p {{
         color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important; 
-        font-size: 0.72rem !important;           /* REDUCED FURTHER: Forced tiny scale */
-        font-weight: 600 !important;
-        letter-spacing: 0.08rem !important;      
-        text-transform: uppercase !important;    
+        -webkit-text-fill-color: #FFFFFF !important;
+        font-family: 'Cormorant Garamond', serif !important;
     }}
-
-    /* TEXT INPUT STYLING */
-    .stTextInput label p {{
-        color: #FFFFFF !important;
-    }}
-    
-    .stTextInput input {{
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
-    }}
-
-    div[data-testid="stNotification"],
-    div[data-testid="stNotification"] p,
-    div[data-testid="stNotification"] span,
-    div[data-testid="stNotification"] div,
-    .stAlert,
-    .stAlert p,
-    .stAlert div {{
-        color: #FFFFFF !important; /* Change this hex code to your preferred text color */
-    }}
-    
-    /* Optional: Force the alert icons to match the text color */
-    div[data-testid="stNotification"] svg {{
-        fill: #FFFFFF !important;
-        color: #FFFFFF !important;
-    }}
-        
-        </style>
+    </style>
     """,
     unsafe_allow_html=True
 )
