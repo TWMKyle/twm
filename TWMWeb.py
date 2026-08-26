@@ -214,7 +214,7 @@ st.markdown(
     }}
 
     .header-silhouette-box {{
-        background-color: rgba(255, 255, 255, 0.10) !important; /* Premium semi-transparent white backdrop */
+        background-color: rgba(255, 255, 255, 0.05) !important; /* Premium semi-transparent white backdrop */
         backdrop-filter: blur(12px) !important;                  
         -webkit-backdrop-filter: blur(12px) !important;          
         border-radius: 16px !important;                          
