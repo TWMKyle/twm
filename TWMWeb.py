@@ -16,6 +16,22 @@ wedding_photos = [
     "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_8287 2.JPG",
     "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_82882.JPG",
     "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-7.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-8.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-9.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-10.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-11.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-12.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-13.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-14.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-15.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-16.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-17.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-18.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-19.jpg",
+    "https://raw.githubusercontent.com/TWMKyle/twm/main/Unknown-20.jpg",
+
+
 ]
 
 img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
