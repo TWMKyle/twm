@@ -14,20 +14,7 @@ wedding_photos = [
     "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_82882.JPG",
     "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg",
     "https://raw.githubusercontent.com/TWMKyle/twm/main/bikephoto.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_4053_Original.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_5029.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_5549.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_5588.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_5619.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_5758.HEIC",
     "https://raw.githubusercontent.com/TWMKyle/twm/main/671741678_818147120879329_7560801041831527780_n.jpg",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_6722.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_6731.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_7187.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_7167.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_7157.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_7053.HEIC",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_6861.HEIC",
 ]
 
 img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
