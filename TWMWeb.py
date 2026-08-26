@@ -9,7 +9,7 @@ import pandas as pd
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
-st.video("https://www.youtube.com/watch?v=6rVoUn9iMw8")
+st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 wedding_photos = [
 
