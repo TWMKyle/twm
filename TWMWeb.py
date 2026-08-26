@@ -284,8 +284,8 @@ st.markdown(
     
     /* Optional: Force the alert icons to match the text color */
     div[data-testid="stNotification"] svg {{
-        fill: #000000 !important;
-        color: #000000 !important;
+        fill: #FFFFFF !important;
+        color: #FFFFFF !important;
     }}
         
         </style>
