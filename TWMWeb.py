@@ -84,55 +84,41 @@ st.markdown(
         vertical-align: middle !important;
     }}
 
-    /* 3. MAIN PANEL BODY TEXT & DESCRIPTIONS (STRICTLY FOR CONTENT CONTAINER ONLY) */
-    .stMain p,
-    .stMain [data-testid="stMarkdownContainer"] p,
-    .stAppViewBlockContainer p {{
-        color: #FFFFFF !important; /* Forces normal st.write text to be White on background */
+    /* 3. BODY TEXT & DESCRIPTIONS (SHRUNK LUXURY CORMORANT GARAMOND) */
+    p, .stApp p, [data-testid="stSidebar"] p {{
+        color: #333333 !important; /* Charcoal font for optimal reading contrast */
         font-family: 'Cormorant Garamond', serif !important;
-        font-size: 0.95rem !important;
+        font-size: 0.95rem !important; /* SHRUNK: Clean, delicate book layout */
         letter-spacing: 0.02rem !important;
     }}
 
-    /* 4. SIDEBAR SPECIFIC TEXT: REMAIN SOLID CHARCOAL BLACK */
-    [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {{
-        color: #333333 !important; /* Keeps sidebar fonts dark */
-        -webkit-text-fill-color: #333333 !important;
-        font-family: 'Cormorant Garamond', serif !important;
+    /* Ensure main panel text over dark images stays readable if needed */
+    .stAppViewBlockContainer p {{
+        color: #FFFFFF !important; /* Keeps main panel text white against background image */
     }}
 
-    /* 5. CUSTOM PORTRAIT SCROLLABLE STACK (REFINED FOR ELEGANCE) */
+    /* 4. CUSTOM PORTRAIT SCROLLABLE STACK */
     .photo-scroll-container {{
-        max-height: 400px !important;          
-        overflow-y: scroll !important;         
-        overflow-x: hidden !important;         
-        border-radius: 16px !important;
-        padding: 0.8rem !important;
-        background-color: #FCFBF7 !important;  /* Soft Warm White Canvas backdrop */
-        border: 1px solid rgba(212, 175, 55, 0.3) !important; /* Ultra-fine gold accent border */
-        margin-bottom: 1.5rem !important;
-        box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.02) !important;
+        max-height: 400px;          /* DECREASED: Made container shorter */
+        overflow-y: scroll;         
+        overflow-x: hidden;         
+        border-radius: 12px;
+        padding: 0.5rem;
+        background-color: #FAFAFA;  
+        border: 1px solid #EAEAEA;
+        margin-bottom: 1.5rem;
     }}
 
-    /* Style the portrait images inside the stack with smooth transitional physics */
+    /* Style the portrait images inside the stack */
     .portrait-stack-img {{
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 2 / 3 !important;        
-        object-fit: cover !important;          
-        border-radius: 8px !important;
-        margin-bottom: 1rem !important;     
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04) !important;
-        display: block !important;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
-    }}
-
-    /* Delicate lift animation on picture hover */
-    .portrait-stack-img:hover {{
-        transform: scale(1.02) translateY(-2px) !important;
-        box-shadow: 0px 8px 20px rgba(212, 175, 55, 0.15) !important;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 2 / 3;        
+        object-fit: cover;          
+        border-radius: 8px;
+        margin-bottom: 0.75rem;     
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+        display: block;
     }}
 
     [data-testid="stSidebar"] {{
@@ -148,74 +134,61 @@ st.markdown(
     [data-testid="stSidebarUserContent"] {{
         background-color: rgba(255, 255, 255, 0.8) !important; 
         padding: 1.5rem 1.2rem !important; /* DECREASED: Tighter side layout padding */
-        border-radius: 12px !important;
-        margin: 0.75rem !important;
+        border-radius: 12px;
+        margin: 0.75rem;
     }}
 
     /* Elegant custom scrollbar tailoring for modern web browsers */
     .photo-scroll-container::-webkit-scrollbar {{
-        width: 4px !important; /* Sleeker scrollbar track line */
+        width: 6px;
     }}
     .photo-scroll-container::-webkit-scrollbar-track {{
-        background: transparent !important;
+        background: transparent;
     }}
     .photo-scroll-container::-webkit-scrollbar-thumb {{
-        background: rgba(212, 175, 55, 0.4) !important; /* Subtler gold slider accent */        
-        border-radius: 10px !important;
+        background: #D4AF37;        
+        border-radius: 10px;
     }}
-    
-    /* UNIVERSAL BUTTON BASE STRUCTURE STYLING */
+
     div[data-testid="stBaseButton-primary"] button,
     div[data-testid="stBaseButton-secondary"] button,
     [data-testid="stAppViewBlockContainer"] button,
-    button:not([data-testid="baseButton-header"]) {{
+    button {{
         background-color: #4A5D4E !important;    
         border: 2px solid #D4AF37 !important;    
         border-radius: 8px !important;           
         font-family: 'Cormorant Garamond', serif !important; 
-        padding: 0.35rem 1rem !important;        
+        padding: 0.35rem 1rem !important;        /* Tighter button body bounds */
         transition: all 0.3s ease !important;    
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
     }}
 
-    /* FORCE TEXT CODES INSIDE INTERACTIVE APP BUTTONS TO BE UPPERCASE WHITE */
+    /* FORCE ALL NESTED TEXT CHANNELS INSIDE BUTTONS TO BE WHITE AND SMALLER */
     div[data-testid="stBaseButton-primary"] button p,
     div[data-testid="stBaseButton-secondary"] button p,
-    .stApp div[data-testid="stBaseButton-primary"] button p,
-    .stApp div[data-testid="stBaseButton-secondary"] button p,
-    .stMain button p,
-    .stMain button div,
-    .stMain button span,
-    .stMain button [data-testid="stMarkdownContainer"] {{
+    button p,
+    button div,
+    button span,
+    button [data-testid="stMarkdownContainer"] {{
         color: #FFFFFF !important;
         -webkit-text-fill-color: #FFFFFF !important; 
-        font-size: 0.75rem !important;           
+        font-size: 0.75rem !important;           /* REDUCED: Shrunk from 0.9rem to 0.75rem */
         font-weight: 600 !important;
-        letter-spacing: 0.08rem !important;      
+        letter-spacing: 0.08rem !important;      /* Elegant letter spacing for smaller font sizes */
         text-transform: uppercase !important;    
-    }}
-
-    /* EXPLICITLY PROTECTION FOR THE SIDEBAR COLLAPSE ICON SYSTEM */
-    [data-testid="baseButton-header"],
-    [data-testid="baseButton-header"] *,
-    [data-testid="collapsedControl"],
-    [data-testid="collapsedControl"] * {{
-        text-transform: none !important; 
-        letter-spacing: normal !important;
-        color: #333333 !important;
     }}
 
     /* Interactive Hover State */
     div[data-testid="stBaseButton-primary"] button:hover,
     div[data-testid="stBaseButton-secondary"] button:hover,
-    button:not([data-testid="baseButton-header"]):hover {{
+    button:hover {{
         background-color: #3B4B3E !important;    
         border-color: #F3E5AB !important;        
         box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; 
-        transform: translateY(-1px) !important;              
-        cursor: pointer !important;
+        transform: translateY(-1px);              
+        cursor: pointer;
     }}
-    
+
     /* Ensure smaller text stays white on hover */
     button:hover [data-testid="stMarkdownContainer"],
     button:hover p {{
@@ -223,8 +196,30 @@ st.markdown(
         -webkit-text-fill-color: #FFFFFF !important;
     }}
 
+    /* Force every possible text element inside the button container to be White */
+    div[data-testid="stBaseButton-primary"] button p,
+    div[data-testid="stBaseButton-secondary"] button p,
+    button p,
+    button div,
+    button span,
+    button [data-testid="stMarkdownContainer"] {{
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important; 
+    }}
+
+    /* Interactive Hover State */
+    div[data-testid="stBaseButton-primary"] button:hover,
+    div[data-testid="stBaseButton-secondary"] button:hover,
+    button:hover {{
+        background-color: #3B4B3E !important;    
+        border-color: #F3E5AB !important;        
+        box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; 
+        transform: translateY(-1px);              /* SHRUNK: Smaller lift track gap */
+        cursor: pointer;
+    }}
+
     .header-silhouette-box {{
-        background-color: rgba(255, 255, 255, 0) !important; 
+        background-color: rgba(255, 255, 255, 0) !important; /* Premium semi-transparent white backdrop */
         backdrop-filter: blur(12px) !important;                  
         -webkit-backdrop-filter: blur(12px) !important;          
         border-radius: 16px !important;                          
@@ -249,23 +244,56 @@ st.markdown(
 
     /* Target the Paragraph Description text directly inside the custom HTML layout block */
     .header-silhouette-box p {{
-        color: #2C3E50 !important; 
+        color: #2C3E50 !important; /* Crisp high-contrast charcoal reading text */
         font-family: 'Cormorant Garamond', serif !important;
         font-size: 1.1rem !important;
         font-weight: 600 !important;
         margin: 0px !important;
     }}
 
-    /* 6. FORCE STREAMLIT ALERTS/SUCCESS BOX TEXT TO WHITE ONLY */
-    [data-testid="stNotification"] p, 
-    [data-testid="stAlert"] p,
-    [data-testid="stNotification"] span,
-    [data-testid="stAlert"] span,
-    div[data-testid="stAlertContainer"] p {{
+    .stApp div[data-testid="stBaseButton-primary"] button p,
+    .stApp div[data-testid="stBaseButton-secondary"] button p,
+    .stApp button p,
+    .stApp button div,
+    .stApp button span,
+    .stApp button [data-testid="stMarkdownContainer"],
+    button p,
+    button [data-testid="stMarkdownContainer"] {{
         color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important; 
+        font-size: 0.72rem !important;           /* REDUCED FURTHER: Forced tiny scale */
+        font-weight: 600 !important;
+        letter-spacing: 0.08rem !important;      
+        text-transform: uppercase !important;    
     }}
-    </style>
+
+    /* TEXT INPUT STYLING */
+    .stTextInput label p {{
+        color: #FFFFFF !important;
+    }}
+
+    .stTextInput input {{
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }}
+
+    div[data-testid="stNotification"],
+    div[data-testid="stNotification"] p,
+    div[data-testid="stNotification"] span,
+    div[data-testid="stNotification"] div,
+    .stAlert,
+    .stAlert p,
+    .stAlert div {{
+        color: #FFFFFF !important; /* Change this hex code to your preferred text color */
+    }}
+
+    /* Optional: Force the alert icons to match the text color */
+    div[data-testid="stNotification"] svg {{
+        fill: #FFFFFF !important;
+        color: #FFFFFF !important;
+    }}
+
+        </style>
     """,
     unsafe_allow_html=True
 )
