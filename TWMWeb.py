@@ -338,8 +338,8 @@ gc = gspread.service_account_from_dict(credentials)
 st.markdown(
     """
     <div class="header-silhouette-box">
-        <h1><span style="font-family: Arial, sans-serif; font-size: 2.2rem; vertical-align: middle; margin-right: 10px;">💍</span>Welcome to Kyle & Cialene's Wedding Page!</h1>
-        <p>powered by: The Wedding Machine</p>
+        <h2><span style="font-family: Arial, sans-serif; font-size: 2.2rem; vertical-align: middle; margin-right: 10px;">💍</span>Welcome to Kyle & Cialene's Wedding Page!</h2>
+        
     </div>
     """,
     unsafe_allow_html=True
