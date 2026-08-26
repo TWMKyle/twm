@@ -10,9 +10,7 @@ from streamlit_gsheets import GSheetsConnection, gsheets_connection
 
 
 wedding_photos = [
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_8287 2.JPG",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_82882.JPG",
-    "https://raw.githubusercontent.com/TWMKyle/twm/main/IMG_3815.jpg",
+
     "https://raw.githubusercontent.com/TWMKyle/twm/main/bikephoto.jpg",
     "https://raw.githubusercontent.com/TWMKyle/twm/main/671741678_818147120879329_7560801041831527780_n.jpg",
 ]
