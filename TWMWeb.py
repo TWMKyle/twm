@@ -52,7 +52,6 @@ import streamlit as st
 
 # Make sure variables img_src1 and img_srcp are defined before running this snippet
 
-st.video("https://www.youtube.com/watch?v=XKR0O5OM1iw")
 
 
 st.markdown(
