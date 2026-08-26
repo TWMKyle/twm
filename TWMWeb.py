@@ -36,7 +36,7 @@ wedding_photos = [
 ]
 
 img_src1 = "https://raw.githubusercontent.com/TWMKyle/twm/main/a38d642b-d7f2-4989-91bc-13fd2048683c.jpg"
-img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/785991633_1844931759820399_1925145865051990065_n.png"
+img_srcp = "https://raw.githubusercontent.com/TWMKyle/twm/main/Untitled design.jpg"
 
 
 
