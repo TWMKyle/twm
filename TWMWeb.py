@@ -3,7 +3,8 @@ import gspread
 import base64
 import os
 import random
-from PIL import Imageimport streamlit as st
+from PIL import Image
+import streamlit as st
 
 # Make sure variables img_src1 and img_srcp are defined before running this snippet
 
