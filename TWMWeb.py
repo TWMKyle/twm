@@ -242,6 +242,32 @@ st.markdown(
         letter-spacing: 0.08rem !important;      
         text-transform: uppercase !important;    
     }}
+
+    /* TEXT INPUT STYLING */
+    .stTextInput label p {{
+        color: #FFFFFF !important;
+    }}
+    
+    .stTextInput input {{
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }}
+
+    div[data-testid="stNotification"],
+    div[data-testid="stNotification"] p,
+    div[data-testid="stNotification"] span,
+    div[data-testid="stNotification"] div,
+    .stAlert,
+    .stAlert p,
+    .stAlert div {{
+        color: #FFFFFF !important; /* Change this hex code to your preferred text color */
+    }}
+    
+    /* Optional: Force the alert icons to match the text color */
+    div[data-testid="stNotification"] svg {{
+        fill: #000000 !important;
+        color: #000000 !important;
+    }}
         
         </style>
     """,
