@@ -51,6 +51,11 @@ import streamlit as st
 
 # Make sure variables img_src1 and img_srcp are defined before running this snippet
 
+
+import streamlit as st
+
+# Make sure variables img_src1 and img_srcp are defined before running this snippet
+
 st.markdown(
     f"""
     <style>
@@ -98,34 +103,34 @@ st.markdown(
 
     /* 4. CUSTOM PORTRAIT SCROLLABLE STACK (REFINED FOR ELEGANCE) */
     .photo-scroll-container {{
-        max-height: 400px;          
-        overflow-y: scroll;         
-        overflow-x: hidden;         
-        border-radius: 16px;
-        padding: 0.8rem;
-        background-color: #FCFBF7;  /* Soft Warm White Canvas backdrop */
-        border: 1px solid rgba(212, 175, 55, 0.25); /* Ultra-fine gold accent border */
-        margin-bottom: 1.5rem;
-        box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.02);
+        max-height: 400px !important;          
+        overflow-y: scroll !important;         
+        overflow-x: hidden !important;         
+        border-radius: 16px !important;
+        padding: 0.8rem !important;
+        background-color: #FCFBF7 !important;  /* Soft Warm White Canvas backdrop */
+        border: 1px solid rgba(212, 175, 55, 0.3) !important; /* Ultra-fine gold accent border */
+        margin-bottom: 1.5rem !important;
+        box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.02) !important;
     }}
 
     /* Style the portrait images inside the stack with smooth transitional physics */
     .portrait-stack-img {{
-        width: 100%;
-        height: auto;
-        aspect-ratio: 2 / 3;        
-        object-fit: cover;          
-        border-radius: 8px;
-        margin-bottom: 1rem;     
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
-        display: block;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 2 / 3 !important;        
+        object-fit: cover !important;          
+        border-radius: 8px !important;
+        margin-bottom: 1rem !important;     
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04) !important;
+        display: block !important;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
     }}
 
     /* Delicate lift animation on picture hover */
     .portrait-stack-img:hover {{
-        transform: scale(1.02) translateY(-2px);
-        box-shadow: 0px 8px 20px rgba(212, 175, 55, 0.15);
+        transform: scale(1.02) translateY(-2px) !important;
+        box-shadow: 0px 8px 20px rgba(212, 175, 55, 0.15) !important;
     }}
 
     [data-testid="stSidebar"] {{
@@ -141,20 +146,20 @@ st.markdown(
     [data-testid="stSidebarUserContent"] {{
         background-color: rgba(255, 255, 255, 0.8) !important; 
         padding: 1.5rem 1.2rem !important; /* DECREASED: Tighter side layout padding */
-        border-radius: 12px;
-        margin: 0.75rem;
+        border-radius: 12px !important;
+        margin: 0.75rem !important;
     }}
 
     /* Elegant custom scrollbar tailoring for modern web browsers */
     .photo-scroll-container::-webkit-scrollbar {{
-        width: 4px; /* Sleeker scrollbar track line */
+        width: 4px !important; /* Sleeker scrollbar track line */
     }}
     .photo-scroll-container::-webkit-scrollbar-track {{
-        background: transparent;
+        background: transparent !important;
     }}
     .photo-scroll-container::-webkit-scrollbar-thumb {{
-        background: rgba(212, 175, 55, 0.4); /* Subtler gold slider accent */        
-        border-radius: 10px;
+        background: rgba(212, 175, 55, 0.4) !important; /* Subtler gold slider accent */        
+        border-radius: 10px !important;
     }}
     
     div[data-testid="stBaseButton-primary"] button,
@@ -198,8 +203,8 @@ st.markdown(
         background-color: #3B4B3E !important;    
         border-color: #F3E5AB !important;        
         box-shadow: 0px 6px 15px rgba(214, 175, 55, 0.4) !important; 
-        transform: translateY(-1px);              
-        cursor: pointer;
+        transform: translateY(-1px) !important;              
+        cursor: pointer !important;
     }}
     
     /* Ensure smaller text stays white on hover */
@@ -242,14 +247,15 @@ st.markdown(
         margin: 0px !important;
     }}
 
-    /* 5. FORCE STREAMLIT ALERTS, NOTIFICATIONS, AND MARKDOWNS INSIDE THEM TO WHITE */
+    /* 5. FORCE ALL STREAMLIT WRITE AND SUCCESS NOTIFICATIONS TO WHITE FONT */
     [data-testid="stNotification"], 
     [data-testid="stAlert"],
-    [data-testid="stAlert"] p,
-    [data-testid="stNotification"] p,
-    [data-testid="stAlert"] div,
-    [data-testid="stNotification"] div,
-    [data-testid="stAlert"] [data-testid="stMarkdownContainer"] p {{
+    div[data-testid="stAlertContainer"],
+    [data-testid="stNotification"] *,
+    [data-testid="stAlert"] *,
+    div[data-testid="stElementBlock"] div[data-testid="stMarkdownContainer"] p,
+    .stAppViewBlockContainer [data-testid="stMarkdownContainer"] p,
+    .stApp p {{
         color: #FFFFFF !important;
         -webkit-text-fill-color: #FFFFFF !important;
         font-family: 'Cormorant Garamond', serif !important;
