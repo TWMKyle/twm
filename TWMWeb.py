@@ -47,19 +47,6 @@ st.sidebar.write("📅 Date: June 20, 2027")
 st.sidebar.markdown("[Show me the invitation!](https://www.canva.com/design/DAHLwCT15lo/gAiU1GbQT-QrcsTOZ_uvSA/view?utm_content=DAHLwCT15lo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h417e3fcbf5)")
 st.sidebar.markdown("[Show me the venue please!](https://lascabanasbypollas.lodgify.com)")
 
-import streamlit as st
-
-# Make sure variables img_src1 and img_srcp are defined before running this snippet
-
-
-import streamlit as st
-
-# Make sure variables img_src1 and img_srcp are defined before running this snippet
-
-import streamlit as st
-
-# Make sure variables img_src1 and img_srcp are defined before running this snippet
-
 st.markdown(
     f"""
     <style>
@@ -92,20 +79,26 @@ st.markdown(
         vertical-align: middle !important;
     }}
 
-    /* 3. BODY TEXT & DESCRIPTIONS (SHRUNK LUXURY CORMORANT GARAMOND) */
-    p, .stApp p {{
-        color: #333333 !important; /* Charcoal font for optimal reading contrast */
+    /* 3. MAIN PANEL BODY TEXT & DESCRIPTIONS (STRICTLY FOR CONTENT CONTAINER ONLY) */
+    .stMain p,
+    .stMain [data-testid="stMarkdownContainer"] p,
+    .stAppViewBlockContainer p {{
+        color: #FFFFFF !important; /* Forces normal st.write text to be White on background */
         font-family: 'Cormorant Garamond', serif !important;
-        font-size: 0.95rem !important; /* SHRUNK: Clean, delicate book layout */
+        font-size: 0.95rem !important;
         letter-spacing: 0.02rem !important;
     }}
-    
-    /* Ensure main panel text over dark images stays readable if needed */
-    .stAppViewBlockContainer p {{
-        color: #FFFFFF !important; /* Keeps main panel text white against background image */
+
+    /* 4. SIDEBAR SPECIFIC TEXT: REMAIN SOLID CHARCOAL BLACK */
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {{
+        color: #333333 !important; /* Keeps sidebar fonts dark */
+        -webkit-text-fill-color: #333333 !important;
+        font-family: 'Cormorant Garamond', serif !important;
     }}
 
-    /* 4. CUSTOM PORTRAIT SCROLLABLE STACK (REFINED FOR ELEGANCE) */
+    /* 5. CUSTOM PORTRAIT SCROLLABLE STACK (REFINED FOR ELEGANCE) */
     .photo-scroll-container {{
         max-height: 400px !important;          
         overflow-y: scroll !important;         
@@ -251,33 +244,21 @@ st.markdown(
         margin: 0px !important;
     }}
 
-    /* 5. FORCE ALL STREAMLIT WRITE AND SUCCESS NOTIFICATIONS TO WHITE FONT */
-    [data-testid="stNotification"], 
-    [data-testid="stAlert"],
-    div[data-testid="stAlertContainer"],
-    [data-testid="stNotification"] *,
-    [data-testid="stAlert"] *,
-    div[data-testid="stElementBlock"] div[data-testid="stMarkdownContainer"] p,
-    .stAppViewBlockContainer [data-testid="stMarkdownContainer"] p,
-    .stAppViewBlockContainer p {{
+    /* 6. FORCE STREAMLIT ALERTS/SUCCESS BOX TEXT TO WHITE ONLY */
+    [data-testid="stNotification"] p, 
+    [data-testid="stAlert"] p,
+    [data-testid="stNotification"] span,
+    [data-testid="stAlert"] span,
+    div[data-testid="stAlertContainer"] p {{
         color: #FFFFFF !important;
         -webkit-text-fill-color: #FFFFFF !important;
-        font-family: 'Cormorant Garamond', serif !important;
-    }}
-
-    /* 6. STRICT SIDEBAR FIX: RESTORE DARK BLACK/CHARCOAL FONTS ONLY ON THE SIDE PANEL */
-    [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] div,
-    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {{
-        color: #333333 !important;
-        -webkit-text-fill-color: #333333 !important;
-        font-family: 'Cormorant Garamond', serif !important;
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
+
+
 
 
 html_photo_stack = '<div class="photo-scroll-container">'
